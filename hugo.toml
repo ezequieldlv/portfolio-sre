@@ -1,0 +1,52 @@
+baseURL = "https://yourdomain.com/"
+languageCode = "en"
+title = "Ezequiel De la Vega | SRE Portfolio"
+theme = "PaperMod"
+
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = false
+  ShowShareButtons = false
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = false
+  
+  # --- PROFILE ---
+  [params.profileMode]
+    enabled = true
+    title = "<span class='typing-effect'>root@ez-lab:~$ whoami</span>"
+    subtitle = "Systems Engineering Student | SRE | Biohacker"
+    imageUrl = "/images/juicy3.jpg"
+    imageTitle = "My Photo"
+    imageWidth = 120
+    imageHeight = 120
+
+  # --- SOCIAL ICONS (Footer) ---
+  [[params.socialIcons]]
+    name = "linkedin"
+    url = "https://linkedin.com/in/ezequieldlv"
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/ezequieldlv"
+
+# --- MENU ---
+[[menu.main]]
+  identifier = "about"
+  name = "About Me"
+  url = "/about/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "projects"
+  name = "Projects"
+  url = "/projects/"
+  weight = 20
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

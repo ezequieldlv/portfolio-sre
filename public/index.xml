@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ezequiel De la Vega | SRE Portfolio</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Ezequiel De la Vega | SRE Portfolio</description>
+    <generator>Hugo -- 0.153.5</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;h2 id=&#34;profile&#34;&gt;Profile&lt;/h2&gt;
+&lt;p&gt;I am a &lt;strong&gt;Systems Engineering student&lt;/strong&gt; (3rd Year) at UTN FRC and an aspiring &lt;strong&gt;Site Reliability Engineer (SRE)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;My background in &lt;strong&gt;Tier 2 Technical Support&lt;/strong&gt; has given me a unique perspective on reliability: I don&amp;rsquo;t just build systems; I know how they fail and how to fix them under pressure. I am passionate about &lt;strong&gt;automation&lt;/strong&gt;, &lt;strong&gt;Linux&lt;/strong&gt; (Arch is my daily driver), and optimizing workflows using methodologies like &lt;strong&gt;Docs-as-Code&lt;/strong&gt;.&lt;/p&gt;
+&lt;hr&gt;
+&lt;br&gt;
+&lt;a href=&#34;http://localhost:1313/cv_sre.pdf&#34; target=&#34;_blank&#34; class=&#34;btn-download&#34;&gt;
+   Download PDF Resume 📄
+&lt;/a&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;h2 id=&#34;-professional-experience&#34;&gt;💼 Professional Experience&lt;/h2&gt;
+&lt;h3 id=&#34;technical-support-analyst-tier-2--konecta-personal-flow&#34;&gt;&lt;strong&gt;Technical Support Analyst (Tier 2) | Konecta (Personal Flow)&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Sep 2024 - Present&lt;/em&gt;
+Handling critical connectivity incidents for ISP clients (FTTH/HFC).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Projects</title>
+      <link>http://localhost:1313/projects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/projects/</guid>
+      <description>&lt;p&gt;Here is a collection of my work in &lt;strong&gt;Infrastructure&lt;/strong&gt;, &lt;strong&gt;Software Development&lt;/strong&gt;, and &lt;strong&gt;Automation&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;-home-lab--private-cloud-in-progress&#34;&gt;🚀 Home Lab &amp;amp; Private Cloud (In Progress)&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Infrastructure as Code / Self-Hosting&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Building a dedicated homelab on a &lt;strong&gt;Raspberry Pi 5&lt;/strong&gt; to simulate a production environment.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Host services (DNS, VPN, Media) avoiding cloud costs and gaining low-level control.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Docker, Pi-hole (DNS Filtering), WireGuard VPN, Nginx Proxy Manager.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; Raspberry Pi 5.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;-internal-knowledge-base-modernization&#34;&gt;📄 Internal Knowledge Base Modernization&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Docs-as-Code / Automation (at Konecta)&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,174 @@
+/* --- ESTILO "COASTAL SRE" (Silver & Teal) --- */
+
+/* 1. FUENTES PREMIUM */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    /* PALETA: OCÉANO PROFUNDO & PLATA */
+    --theme: #0b1021;        /* Fondo: Azul Noche Profundo */
+    --entry: #111a33;        /* Tarjetas */
+    --primary: #cbd5e1;      /* Texto general: Gris Hielo (Slate 300) */
+    --secondary: #64748b;    /* Texto secundario: Gris Muted (Slate 500) */
+    
+    /* EL ACENTO: "Azul Marino tirando a Verde" (Teal) */
+    --accent: #93c5fd;       /* Teal 400 - Fresco, técnico, NO NEÓN */
+    
+    --border: #1e293b;       /* Bordes sutiles */
+}
+
+/* 2. BASE Y LAYOUT */
+body, .main, html {
+    background-color: var(--theme) !important;
+    font-family: 'Inter', sans-serif !important;
+    color: var(--primary) !important;
+}
+
+.main {
+    max-width: 1000px !important;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* 3. TIPOGRAFÍA TÉCNICA */
+h1, h2, h3, h4, code, .code-block, .post-meta {
+    font-family: 'JetBrains Mono', monospace !important;
+}
+
+p, li {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+/* --- TÍTULOS PRINCIPALES (H1, H2): PLATA / GRIS (Sobrios) --- */
+h1, .entry-title {
+    /* Gradiente muy sutil de Blanco a Gris (Efecto Acero) */
+    background: linear-gradient(to bottom, #f1f5f9, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    color: #e2e8f0 !important; /* Plata solido */
+    margin-top: 40px;
+}
+
+/* --- SUBTÍTULOS (H3): Ahora en Plata Sobrio --- */
+h3 {
+    color: #e2e8f0 !important; /* Blanco Plata (Igual que el resto del texto) */
+    font-size: 1.1rem;
+    margin-top: 35px;
+    border-bottom: 1px solid #1e293b; /* La línea de abajo ahora es gris oscuro sutil */
+    padding-bottom: 5px;
+    display: inline-block;
+    font-weight: 600;
+}
+
+/* 4. ENLACES */
+a {
+    color: #e2e8f0; /* Blanco/Plata por defecto */
+    text-decoration: none !important;
+    border-bottom: none !important;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent); /* Se ilumina en Turquesa al pasar el mouse */
+    text-shadow: 0 0 8px rgba(147, 197, 253, 0.3)   ; /* Glow suave */
+}
+
+.anchor { display: none !important; } /* Ocultar el # */
+
+/* 5. TECH BADGES */
+code {
+    background-color: #0f172a !important;
+    color: var(--accent) !important; /* Texto Turquesa */
+    border: 1px solid #1e293b;
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.85rem;
+}
+
+/* 6. BARRAS DE PROGRESO (.fill) */
+.skill-container {
+    margin: 30px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    background-color: #1e293b; 
+    height: 8px; /* Un poco más gruesas para que luzca el color */
+    border-radius: 4px;
+    margin-bottom: 25px;
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+.fill {
+    background: linear-gradient(90deg, #1e3a8a 0%, #93c5fd 100%);
+    height: 100%;
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+/* 7. GALERÍA DE IMÁGENES */
+.gallery-container {
+    display: flex;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.gallery-item { flex: 1; text-align: center; }
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    object-position: top;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.gallery-item img:hover {
+    opacity: 1;
+    border-color: var(--accent);
+}
+
+.caption {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    color: var(--secondary);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+@media (max-width: 768px) {
+    .gallery-container { flex-direction: column; }
+}
+
+/* Estilo del Botón de Descarga */
+.btn-download {
+    display: inline-block;
+    padding: 12px 24px;
+    border: 1px solid var(--accent); /* Borde del color que elijas */
+    border-radius: 5px;
+    color: var(--primary) !important;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255, 255, 255, 0.05); /* Fondo muy sutil */
+    transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+    background: var(--accent); /* Se rellena de azul al pasar el mouse */
+    color: #0b1021 !important; /* Letras oscuras para contraste */
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); /* Brillo suave */
+    transform: translateY(-2px);
+}
