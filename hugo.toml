@@ -20,7 +20,7 @@ buildExpired = false
     enabled = true
     title = "<span class='typing-effect'>root@ez-lab:~$ whoami</span>"
     subtitle = "Systems Engineering Student | SRE | Biohacker"
-    imageUrl = "/images/juicy3.jpg"
+    imageUrl = "/images/me.jpeg"
     imageTitle = "My Photo"
     imageWidth = 120
     imageHeight = 120

@@ -45,7 +45,7 @@ Handling critical connectivity incidents for ISP clients (FTTH/HFC).
 ## 🛠️ Tech Stack
 
 * **OS:** Linux Administration (Arch Linux, Debian/Ubuntu).
-* **DevOps:** Docker, Git/GitLab, MkDocs, SSH, VirtualBox.
+* **DevOps:** Docker, Git/GitLab, CI/CD, MkDocs, SSH, VirtualBox.
 * **Networking:** TCP/IP, DNS, DHCP, Subnetting, Network Troubleshooting (Layer 1-3).
 * **Coding:** Python (Scripting), Bash, Java, SQL.
 * **Languages:** Spanish (Native), English (B2 - Professional).

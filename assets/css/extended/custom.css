@@ -11,7 +11,7 @@
     --secondary: #64748b;    /* Texto secundario: Gris Muted (Slate 500) */
     
     /* EL ACENTO: "Azul Marino tirando a Verde" (Teal) */
-    --accent: #93c5fd;       /* Teal 400 - Fresco, técnico, NO NEÓN */
+    --accent: #93c5fd;       /* Teal 400 - Fresco, técnico */
     
     --border: #1e293b;       /* Bordes sutiles */
 }
