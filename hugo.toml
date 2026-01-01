@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://ezequieldlv.github.io/portfolio-sre/"
 languageCode = "en"
 title = "Ezequiel De la Vega | SRE Portfolio"
 theme = "PaperMod"
