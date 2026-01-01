@@ -1,4 +1,4 @@
-baseURL = "https://ezequieldlv.github.io/portfolio-sre"
+baseURL = "https://ezequieldlv.github.io/portfolio-sre/"
 languageCode = "en"
 title = "Ezequiel De la Vega | SRE Portfolio"
 theme = "PaperMod"
@@ -20,7 +20,7 @@ buildExpired = false
     enabled = true
     title = "<span class='typing-effect'>root@ez-lab:~$ whoami</span>"
     subtitle = "Systems Engineering Student | SRE | Biohacker"
-    imageUrl = "/images/me.jpeg"
+    imageUrl = "images/me.jpeg"
     imageTitle = "My Photo"
     imageWidth = 120
     imageHeight = 120
