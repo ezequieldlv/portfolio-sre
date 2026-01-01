@@ -25,11 +25,11 @@ Led the migration of technical documentation from legacy Google Sites to a moder
 
 <div class="gallery-container">
     <div class="gallery-item">
-        <img src="static/images/legacy_google_site.png" alt="Legacy System">
+        <img src="/portfolio-sre/images/legacy_google_site.png" alt="Legacy System">
         <span class="caption">Fig 1. Legacy System (Old)</span>
     </div>
     <div class="gallery-item">
-        <img src="static/images/modern_mkdocs.png" alt="MkDocs System">
+        <img src="/portfolio-sre/static/images/modern_mkdocs.png" alt="MkDocs System">
         <span class="caption">Fig 2. New MkDocs Workflow</span>
     </div>
 </div>
