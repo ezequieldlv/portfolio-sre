@@ -18,6 +18,7 @@ Building a dedicated homelab on a **Raspberry Pi 5** to simulate a production en
 *Docs-as-Code / Automation (at Konecta)*
 
 Led the migration of technical documentation from legacy Google Sites to a modern workflow.
+Implemented Google Analytics to track internal search patterns, allowing us to identify missing documentation and reduce ticket resolution time.
 * **Impact:** Improved information retrieval speed for Tier 2 agents.
 * **Result:** Standardized troubleshooting guides facilitating collaborative maintenance.
 **The Challenge:** Information was scattered across legacy sites.
@@ -34,7 +35,7 @@ Led the migration of technical documentation from legacy Google Sites to a moder
     </div>
 </div>
 
-> **Tech Stack:** `MkDocs` `Python` `GitLab` `Markdown`
+> **Tech Stack:** `MkDocs` `Python` `GitLab` `Markdown` `Google Analytics`
 
 ## 📦 Logistics Microservices Backend
 *Java / Microservices (University Project)*
