@@ -6,13 +6,24 @@ hideMeta: true
 
 Here is a collection of my work in **Infrastructure**, **Software Development**, and **Automation**.
 
-## 🚀 Home Lab & Private Cloud (In Progress)
-*Infrastructure as Code / Self-Hosting*
+## 🛡️ Ez-Lab: Zero Trust Private Cloud
+*Infrastructure as Code / DevSecOps*
 
-Building a dedicated homelab on a **Raspberry Pi 5** to simulate a production environment.
-* **Goal:** Host services (DNS, VPN, Media) avoiding cloud costs and gaining low-level control.
-* **Stack:** Docker, Pi-hole (DNS Filtering), WireGuard VPN, Nginx Proxy Manager.
-* **Hardware:** Raspberry Pi 5.
+Designed and deployed a resilient, self-hosted infrastructure on a **Raspberry Pi 5**, simulating a production environment protected by a Zero Trust network.
+* **The Challenge:** Accessing local services securely behind an ISP CGNAT without exposing public ports.
+* **The Solution:** Implemented a **Tailscale Mesh VPN** as an overlay network, bypassing NAT restrictions while maintaining strict firewall rules (UFW).
+* **Architecture:** Docker Compose microservices (Media Server, NAS, VPN) with persistent storage and automated recovery policies.
+* **Key Achievement:** Solved Docker kernel routing issues to enable "Exit Node" functionality, routing traffic through the home network from anywhere.
+
+> **Tech Stack:** `Docker Compose` `Tailscale` `Linux Hardening` `Jellyfin` `Samba` `Bash`
+> [🔗 View Repository](https://github.com/ezequieldlv/ez-lab)
+
+<div class="gallery-container">
+    <div class="gallery-item">
+        <img src="/portfolio-sre/images/portainer.png" alt="Ez-Lab Architecture">
+        <span class="caption">Fig 1. Zero Trust Architecture Diagram</span>
+    </div>
+</div>
 
 ## 📄 Internal Knowledge Base Modernization
 *Docs-as-Code / Automation (at Konecta)*
