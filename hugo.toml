@@ -46,6 +46,11 @@ buildExpired = false
   url = "/projects/"
   weight = 20
 
+[[menu.main]]
+name = "Roadmap"
+url = "/roadmap/"
+weight = 30  
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]

@@ -1,68 +1,63 @@
 ---
-title: "Projects"
+title: "Engineering Projects"
 draft: false
 hideMeta: true
 ---
 
-Here is a collection of my work in **Infrastructure**, **Software Development**, and **Automation**.
+A showcase of my journey building resilient infrastructure and automating workflows.
 
-## 🛡️ Ez-Lab: Zero Trust Private Cloud
-*Infrastructure as Code / DevSecOps*
+## 🛡️ Ez-Lab: Hybrid Cloud Infrastructure
+*Infrastructure as Code / DevSecOps / Self-Hosted*
 
-Designed and deployed a resilient, self-hosted infrastructure on a **Raspberry Pi 5**, simulating a production environment protected by a Zero Trust network.
-* **The Challenge:** Accessing local services securely behind an ISP CGNAT without exposing public ports.
-* **The Solution:** Implemented a **Tailscale Mesh VPN** as an overlay network, bypassing NAT restrictions while maintaining strict firewall rules (UFW).
-* **Architecture:** Docker Compose microservices (Media Server, NAS, VPN) with persistent storage and automated recovery policies.
-* **Key Achievement:** Solved Docker kernel routing issues to enable "Exit Node" functionality, routing traffic through the home network from anywhere.
+Designed and deployed a resilient, self-hosted microservices architecture on a **Raspberry Pi 5**. This project simulates a production environment protected by Zero Trust principles.
 
-> **Tech Stack:** `Docker Compose` `Tailscale` `Linux Hardening` `Jellyfin` `Samba` `Bash`
+* **The Challenge:** Securely exposing local services behind an ISP CGNAT without opening dangerous ports.
+* **The Solution:** Implemented a **Cloudflare Tunnel** (Zero Trust) to bypass NAT restrictions while maintaining strict firewall rules.
+* **Architecture:**
+    * **Orchestration:** Docker Compose managing the *Arr Stack (Media Ops) and Pi-hole.
+    * **Networking:** Tailscale Mesh VPN for secure remote management.
+    * **Automation:** Python scripts auditing kernel sensors (Temp/RAM) and triggering Telegram alerts.
+* **Status:** `Production 🟢`
+
+> **Tech Stack:** `Docker` `Python` `Cloudflare Zero Trust` `Linux Hardening` `Bash`
 > [🔗 View Repository](https://github.com/ezequieldlv/ez-lab)
 
-<div class="gallery-container">
-    <div class="gallery-item">
-        <img src="/portfolio-sre/images/portainer.png" alt="Ez-Lab Architecture">
-        <span class="caption">Fig 1. Zero Trust Architecture Diagram</span>
-    </div>
-</div>
+---
 
-## 📄 Internal Knowledge Base Modernization
-*Docs-as-Code / Automation (at Konecta)*
+## 🗺️ The SRE Roadmap (Engineering Log)
+*Continuous Learning / Documentation*
 
-Led the migration of technical documentation from legacy Google Sites to a modern workflow.
-Implemented Google Analytics to track internal search patterns, allowing us to identify missing documentation and reduce ticket resolution time.
-* **Impact:** Improved information retrieval speed for Tier 2 agents.
-* **Result:** Standardized troubleshooting guides facilitating collaborative maintenance.
-**The Challenge:** Information was scattered across legacy sites.
-**The Solution:** Migrated to a Docs-as-Code workflow.
+I am publicly documenting my transition to Site Reliability Engineering through a structured **9-Phase Roadmap**.
 
-<div class="gallery-container">
-    <div class="gallery-item">
-        <img src="/portfolio-sre/images/legacy_google_site.png" alt="Legacy System">
-        <span class="caption">Fig 1. Legacy System (Old)</span>
-    </div>
-    <div class="gallery-item">
-        <img src="/portfolio-sre/images/modern_mkdocs.png" alt="MkDocs System">
-        <span class="caption">Fig 2. New MkDocs Workflow</span>
-    </div>
-</div>
+* **Phase 1-3 (Completed):** Infrastructure Hardening, Containerization, and Security Fortress.
+* **Phase 4 (Current):** "The Builder" - Learning Golang and Advanced Docker Builds.
+* **Future Phases:** Deep Observability (Prometheus/Grafana), Kubernetes Orchestration, and AWS Cloud Migration.
 
-> **Tech Stack:** `MkDocs` `Python` `GitLab` `Markdown` `Google Analytics`
+> [👉 **View Full Roadmap & Progress**]({{< ref "roadmap.md" >}})
 
-## 📦 Logistics Microservices Backend
-*Java / Microservices (University Project)*
+---
 
-Co-developed a backend solution for a terrestrial logistics system (shipping containers).
-* **Architecture:** Microservices-based architecture ensuring modularity.
-* **Tech:** **Java Spring Boot**, **Docker**, Keycloak (Identity Management), RESTful APIs.
+## 📄 Knowledge Base Modernization (Konecta)
+*Docs-as-Code / Process Optimization*
+
+Led an initiative to modernize internal technical documentation for Tier 2 Support agents.
+* **Problem:** Critical troubleshooting info was scattered across legacy static sites and PDFs.
+* **Solution:** Migrated content to a **Docs-as-Code** system using **MkDocs**, enabling version control and faster search.
+
+> **Tech Stack:** `MkDocs` `Markdown` `Git`
+
+---
 
 ## 🌐 SRE Portfolio (This Website)
-*Web Performance / CI/CD*
+*Edge Computing / Self-Hosted / CI/CD*
 
-A minimalist, high-performance portfolio built with a **Docs-as-Code** philosophy.
-* **Engine:** Hugo (Static Site Generator) + PaperMod Theme.
-* **Deployment:** Dockerized container served via Nginx (Upcoming).
+More than just a website, this portfolio is a live demo of my infrastructure skills. Hosted directly on my home cluster, exposed securely to the world.
 
-## 🧬 Biohacking Data Analysis (Planned)
-*Python / Data Observability*
+* **Infrastructure:** Raspberry Pi 5 (8GB) running Arch Linux/Debian.
+* **Web Server:** Nginx configured as a Reverse Proxy with strict caching policies.
+* **Security:** Exposed via **Cloudflare Tunnels** (Zero Trust) to bypass CGNAT and enforce HTTPS without opening firewall ports.
+* **CI/CD:** Automated deployment pipeline (Git push -> Live).
 
-Scripts to correlate physiological data (sleep, nutrition) with cognitive performance, applying observability principles to human biology.
+> **Tech Stack:** `Hugo` `Nginx` `Cloudflare` `Raspberry Pi`
+
+---

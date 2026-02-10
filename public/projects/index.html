@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><script src="/portfolio-sre/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-sre/livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>Projects | Ezequiel De la Vega | SRE Portfolio</title>
+<title>Engineering Projects | Ezequiel De la Vega | SRE Portfolio</title>
 <meta name="keywords" content="">
-<meta name="description" content="Here is a collection of my work in Infrastructure, Software Development, and Automation.
-🚀 Home Lab &amp; Private Cloud (In Progress)
-Infrastructure as Code / Self-Hosting
-Building a dedicated homelab on a Raspberry Pi 5 to simulate a production environment.
+<meta name="description" content="A showcase of my journey building resilient infrastructure and automating workflows.
+🛡️ Ez-Lab: Hybrid Cloud Infrastructure
+Infrastructure as Code / DevSecOps / Self-Hosted
+Designed and deployed a resilient, self-hosted microservices architecture on a Raspberry Pi 5. This project simulates a production environment protected by Zero Trust principles.
 
-Goal: Host services (DNS, VPN, Media) avoiding cloud costs and gaining low-level control.
-Stack: Docker, Pi-hole (DNS Filtering), WireGuard VPN, Nginx Proxy Manager.
-Hardware: Raspberry Pi 5.
+The Challenge: Securely exposing local services behind an ISP CGNAT without opening dangerous ports.
+The Solution: Implemented a Cloudflare Tunnel (Zero Trust) to bypass NAT restrictions while maintaining strict firewall rules.
+Architecture:
 
-📄 Internal Knowledge Base Modernization
-Docs-as-Code / Automation (at Konecta)">
+Orchestration: Docker Compose managing the *Arr Stack (Media Ops) and Pi-hole.
+Networking: Tailscale Mesh VPN for secure remote management.
+Automation: Python scripts auditing kernel sensors (Temp/RAM) and triggering Telegram alerts.
+
+
+Status: Production 🟢
+
+
+Tech Stack: Docker Python Cloudflare Zero Trust Linux Hardening Bash
+🔗 View Repository">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/projects/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.ebb262299daa2d4f99b38ef9f744e01fb1efe8600b7e9d03e266f40c1ee3506a.css" integrity="sha256-67JiKZ2qLU&#43;Zs47590TgH7Hv6GALfp0D4mb0DB7jUGo=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="http://localhost:1313/portfolio-sre/projects/">
+<link crossorigin="anonymous" href="/portfolio-sre/assets/css/stylesheet.ebb262299daa2d4f99b38ef9f744e01fb1efe8600b7e9d03e266f40c1ee3506a.css" integrity="sha256-67JiKZ2qLU&#43;Zs47590TgH7Hv6GALfp0D4mb0DB7jUGo=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/portfolio-sre/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/portfolio-sre/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/portfolio-sre/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/portfolio-sre/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/portfolio-sre/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/projects/">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/portfolio-sre/projects/">
 <noscript>
     <style>
         #theme-toggle,
@@ -86,7 +94,7 @@ Docs-as-Code / Automation (at Konecta)">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="Ezequiel De la Vega | SRE Portfolio (Alt + H)">Ezequiel De la Vega | SRE Portfolio</a>
+            <a href="http://localhost:1313/portfolio-sre/" accesskey="h" title="Ezequiel De la Vega | SRE Portfolio (Alt + H)">Ezequiel De la Vega | SRE Portfolio</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -112,13 +120,18 @@ Docs-as-Code / Automation (at Konecta)">
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/about/" title="About Me">
+                <a href="http://localhost:1313/portfolio-sre/about/" title="About Me">
                     <span>About Me</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/projects/" title="Projects">
+                <a href="http://localhost:1313/portfolio-sre/projects/" title="Projects">
                     <span class="active">Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/portfolio-sre/roadmap/" title="Roadmap">
+                    <span>Roadmap</span>
                 </a>
             </li>
         </ul>
@@ -130,57 +143,66 @@ Docs-as-Code / Automation (at Konecta)">
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      Projects
+      Engineering Projects
     </h1>
   </header> 
-  <div class="post-content"><p>Here is a collection of my work in <strong>Infrastructure</strong>, <strong>Software Development</strong>, and <strong>Automation</strong>.</p>
-<h2 id="-home-lab--private-cloud-in-progress">🚀 Home Lab &amp; Private Cloud (In Progress)<a hidden class="anchor" aria-hidden="true" href="#-home-lab--private-cloud-in-progress">#</a></h2>
-<p><em>Infrastructure as Code / Self-Hosting</em></p>
-<p>Building a dedicated homelab on a <strong>Raspberry Pi 5</strong> to simulate a production environment.</p>
+  <div class="post-content"><p>A showcase of my journey building resilient infrastructure and automating workflows.</p>
+<h2 id="-ez-lab-hybrid-cloud-infrastructure">🛡️ Ez-Lab: Hybrid Cloud Infrastructure<a hidden class="anchor" aria-hidden="true" href="#-ez-lab-hybrid-cloud-infrastructure">#</a></h2>
+<p><em>Infrastructure as Code / DevSecOps / Self-Hosted</em></p>
+<p>Designed and deployed a resilient, self-hosted microservices architecture on a <strong>Raspberry Pi 5</strong>. This project simulates a production environment protected by Zero Trust principles.</p>
 <ul>
-<li><strong>Goal:</strong> Host services (DNS, VPN, Media) avoiding cloud costs and gaining low-level control.</li>
-<li><strong>Stack:</strong> Docker, Pi-hole (DNS Filtering), WireGuard VPN, Nginx Proxy Manager.</li>
-<li><strong>Hardware:</strong> Raspberry Pi 5.</li>
-</ul>
-<h2 id="-internal-knowledge-base-modernization">📄 Internal Knowledge Base Modernization<a hidden class="anchor" aria-hidden="true" href="#-internal-knowledge-base-modernization">#</a></h2>
-<p><em>Docs-as-Code / Automation (at Konecta)</em></p>
-<p>Led the migration of technical documentation from legacy Google Sites to a modern workflow.</p>
+<li><strong>The Challenge:</strong> Securely exposing local services behind an ISP CGNAT without opening dangerous ports.</li>
+<li><strong>The Solution:</strong> Implemented a <strong>Cloudflare Tunnel</strong> (Zero Trust) to bypass NAT restrictions while maintaining strict firewall rules.</li>
+<li><strong>Architecture:</strong>
 <ul>
-<li><strong>Impact:</strong> Improved information retrieval speed for Tier 2 agents.</li>
-<li><strong>Result:</strong> Standardized troubleshooting guides facilitating collaborative maintenance.
-<strong>The Challenge:</strong> Information was scattered across legacy sites.
-<strong>The Solution:</strong> Migrated to a Docs-as-Code workflow.</li>
+<li><strong>Orchestration:</strong> Docker Compose managing the *Arr Stack (Media Ops) and Pi-hole.</li>
+<li><strong>Networking:</strong> Tailscale Mesh VPN for secure remote management.</li>
+<li><strong>Automation:</strong> Python scripts auditing kernel sensors (Temp/RAM) and triggering Telegram alerts.</li>
 </ul>
-<div class="gallery-container">
-    <div class="gallery-item">
-        <img src="/images/legacy_google_site.png" alt="Legacy System">
-        <span class="caption">Fig 1. Legacy System (Old)</span>
-    </div>
-    <div class="gallery-item">
-        <img src="/images/modern_mkdocs.png" alt="MkDocs System">
-        <span class="caption">Fig 2. New MkDocs Workflow</span>
-    </div>
-</div>
+</li>
+<li><strong>Status:</strong> <code>Production 🟢</code></li>
+</ul>
 <blockquote>
-<p><strong>Tech Stack:</strong> <code>MkDocs</code> <code>Python</code> <code>GitLab</code> <code>Markdown</code></p>
+<p><strong>Tech Stack:</strong> <code>Docker</code> <code>Python</code> <code>Cloudflare Zero Trust</code> <code>Linux Hardening</code> <code>Bash</code>
+<a href="https://github.com/ezequieldlv/ez-lab">🔗 View Repository</a></p>
 </blockquote>
-<h2 id="-logistics-microservices-backend">📦 Logistics Microservices Backend<a hidden class="anchor" aria-hidden="true" href="#-logistics-microservices-backend">#</a></h2>
-<p><em>Java / Microservices (University Project)</em></p>
-<p>Co-developed a backend solution for a terrestrial logistics system (shipping containers).</p>
+<hr>
+<h2 id="-the-sre-roadmap-engineering-log">🗺️ The SRE Roadmap (Engineering Log)<a hidden class="anchor" aria-hidden="true" href="#-the-sre-roadmap-engineering-log">#</a></h2>
+<p><em>Continuous Learning / Documentation</em></p>
+<p>I am publicly documenting my transition to Site Reliability Engineering through a structured <strong>9-Phase Roadmap</strong>.</p>
 <ul>
-<li><strong>Architecture:</strong> Microservices-based architecture ensuring modularity.</li>
-<li><strong>Tech:</strong> <strong>Java Spring Boot</strong>, <strong>Docker</strong>, Keycloak (Identity Management), RESTful APIs.</li>
+<li><strong>Phase 1-3 (Completed):</strong> Infrastructure Hardening, Containerization, and Security Fortress.</li>
+<li><strong>Phase 4 (Current):</strong> &ldquo;The Builder&rdquo; - Learning Golang and Advanced Docker Builds.</li>
+<li><strong>Future Phases:</strong> Deep Observability (Prometheus/Grafana), Kubernetes Orchestration, and AWS Cloud Migration.</li>
 </ul>
+<blockquote>
+<p><a href="http://localhost:1313/portfolio-sre/roadmap/">👉 <strong>View Full Roadmap &amp; Progress</strong></a></p>
+</blockquote>
+<hr>
+<h2 id="-knowledge-base-modernization-konecta">📄 Knowledge Base Modernization (Konecta)<a hidden class="anchor" aria-hidden="true" href="#-knowledge-base-modernization-konecta">#</a></h2>
+<p><em>Docs-as-Code / Process Optimization</em></p>
+<p>Led an initiative to modernize internal technical documentation for Tier 2 Support agents.</p>
+<ul>
+<li><strong>Problem:</strong> Critical troubleshooting info was scattered across legacy static sites and PDFs.</li>
+<li><strong>Solution:</strong> Migrated content to a <strong>Docs-as-Code</strong> system using <strong>MkDocs</strong>, enabling version control and faster search.</li>
+</ul>
+<blockquote>
+<p><strong>Tech Stack:</strong> <code>MkDocs</code> <code>Markdown</code> <code>Git</code></p>
+</blockquote>
+<hr>
 <h2 id="-sre-portfolio-this-website">🌐 SRE Portfolio (This Website)<a hidden class="anchor" aria-hidden="true" href="#-sre-portfolio-this-website">#</a></h2>
-<p><em>Web Performance / CI/CD</em></p>
-<p>A minimalist, high-performance portfolio built with a <strong>Docs-as-Code</strong> philosophy.</p>
+<p><em>Edge Computing / Self-Hosted / CI/CD</em></p>
+<p>More than just a website, this portfolio is a live demo of my infrastructure skills. Hosted directly on my home cluster, exposed securely to the world.</p>
 <ul>
-<li><strong>Engine:</strong> Hugo (Static Site Generator) + PaperMod Theme.</li>
-<li><strong>Deployment:</strong> Dockerized container served via Nginx (Upcoming).</li>
+<li><strong>Infrastructure:</strong> Raspberry Pi 5 (8GB) running Arch Linux/Debian.</li>
+<li><strong>Web Server:</strong> Nginx configured as a Reverse Proxy with strict caching policies.</li>
+<li><strong>Security:</strong> Exposed via <strong>Cloudflare Tunnels</strong> (Zero Trust) to bypass CGNAT and enforce HTTPS without opening firewall ports.</li>
+<li><strong>CI/CD:</strong> Automated deployment pipeline (Git push -&gt; Live).</li>
 </ul>
-<h2 id="-biohacking-data-analysis-planned">🧬 Biohacking Data Analysis (Planned)<a hidden class="anchor" aria-hidden="true" href="#-biohacking-data-analysis-planned">#</a></h2>
-<p><em>Python / Data Observability</em></p>
-<p>Scripts to correlate physiological data (sleep, nutrition) with cognitive performance, applying observability principles to human biology.</p>
+<blockquote>
+<p><strong>Tech Stack:</strong> <code>Hugo</code> <code>Nginx</code> <code>Cloudflare</code> <code>Raspberry Pi</code></p>
+</blockquote>
+<hr>
 
 
   </div>
@@ -194,7 +216,7 @@ Docs-as-Code / Automation (at Konecta)">
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">Ezequiel De la Vega | SRE Portfolio</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/portfolio-sre/">Ezequiel De la Vega | SRE Portfolio</a></span> · 
 
     <span>
         Powered by

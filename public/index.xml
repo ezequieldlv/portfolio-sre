@@ -2,46 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Ezequiel De la Vega | SRE Portfolio</title>
-    <link>http://localhost:1313/</link>
+    <link>http://localhost:1313/portfolio-sre/</link>
     <description>Recent content on Ezequiel De la Vega | SRE Portfolio</description>
     <generator>Hugo -- 0.153.5</generator>
     <language>en</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/portfolio-sre/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About Me</title>
-      <link>http://localhost:1313/about/</link>
+      <link>http://localhost:1313/portfolio-sre/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/about/</guid>
-      <description>&lt;h2 id=&#34;profile&#34;&gt;Profile&lt;/h2&gt;
-&lt;p&gt;I am a &lt;strong&gt;Systems Engineering student&lt;/strong&gt; (3rd Year) at UTN FRC and an aspiring &lt;strong&gt;Site Reliability Engineer (SRE)&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;My background in &lt;strong&gt;Tier 2 Technical Support&lt;/strong&gt; has given me a unique perspective on reliability: I don&amp;rsquo;t just build systems; I know how they fail and how to fix them under pressure. I am passionate about &lt;strong&gt;automation&lt;/strong&gt;, &lt;strong&gt;Linux&lt;/strong&gt; (Arch is my daily driver), and optimizing workflows using methodologies like &lt;strong&gt;Docs-as-Code&lt;/strong&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;br&gt;
-&lt;a href=&#34;http://localhost:1313/cv_sre.pdf&#34; target=&#34;_blank&#34; class=&#34;btn-download&#34;&gt;
-   Download PDF Resume 📄
-&lt;/a&gt;
-&lt;br&gt;&lt;br&gt;
-&lt;h2 id=&#34;-professional-experience&#34;&gt;💼 Professional Experience&lt;/h2&gt;
-&lt;h3 id=&#34;technical-support-analyst-tier-2--konecta-personal-flow&#34;&gt;&lt;strong&gt;Technical Support Analyst (Tier 2) | Konecta (Personal Flow)&lt;/strong&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;em&gt;Sep 2024 - Present&lt;/em&gt;
-Handling critical connectivity incidents for ISP clients (FTTH/HFC).&lt;/p&gt;</description>
+      <guid>http://localhost:1313/portfolio-sre/about/</guid>
+      <description>&lt;h2 id=&#34;-profile&#34;&gt;👨‍💻 Profile&lt;/h2&gt;
+&lt;p&gt;I am a &lt;strong&gt;Systems Engineering student&lt;/strong&gt; at UTN FRC and an aspiring &lt;strong&gt;Site Reliability Engineer (SRE)&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;My journey began in &lt;strong&gt;Tier 2 Technical Support&lt;/strong&gt;, handling critical ISP-level incidents. This experience gave me a unique perspective on reliability: I don&amp;rsquo;t just build systems; I understand how they fail under pressure and how to troubleshoot them efficiently.&lt;/p&gt;
+&lt;p&gt;Currently, I am executing a rigorous &lt;strong&gt;9-Phase Engineering Roadmap&lt;/strong&gt; to transition from &amp;ldquo;Localhost&amp;rdquo; to &amp;ldquo;Cloud Native Architect&amp;rdquo;. I am passionate about &lt;strong&gt;Infrastructure as Code&lt;/strong&gt;, &lt;strong&gt;Linux Hardening&lt;/strong&gt; (Arch is my daily driver), and applying &lt;strong&gt;Biohacking principles&lt;/strong&gt; to optimize cognitive performance.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Projects</title>
-      <link>http://localhost:1313/projects/</link>
+      <title>Engineering Projects</title>
+      <link>http://localhost:1313/portfolio-sre/projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/projects/</guid>
-      <description>&lt;p&gt;Here is a collection of my work in &lt;strong&gt;Infrastructure&lt;/strong&gt;, &lt;strong&gt;Software Development&lt;/strong&gt;, and &lt;strong&gt;Automation&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;-home-lab--private-cloud-in-progress&#34;&gt;🚀 Home Lab &amp;amp; Private Cloud (In Progress)&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Infrastructure as Code / Self-Hosting&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Building a dedicated homelab on a &lt;strong&gt;Raspberry Pi 5&lt;/strong&gt; to simulate a production environment.&lt;/p&gt;
+      <guid>http://localhost:1313/portfolio-sre/projects/</guid>
+      <description>&lt;p&gt;A showcase of my journey building resilient infrastructure and automating workflows.&lt;/p&gt;
+&lt;h2 id=&#34;-ez-lab-hybrid-cloud-infrastructure&#34;&gt;🛡️ Ez-Lab: Hybrid Cloud Infrastructure&lt;/h2&gt;
+&lt;p&gt;&lt;em&gt;Infrastructure as Code / DevSecOps / Self-Hosted&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Designed and deployed a resilient, self-hosted microservices architecture on a &lt;strong&gt;Raspberry Pi 5&lt;/strong&gt;. This project simulates a production environment protected by Zero Trust principles.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Goal:&lt;/strong&gt; Host services (DNS, VPN, Media) avoiding cloud costs and gaining low-level control.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Stack:&lt;/strong&gt; Docker, Pi-hole (DNS Filtering), WireGuard VPN, Nginx Proxy Manager.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Hardware:&lt;/strong&gt; Raspberry Pi 5.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Challenge:&lt;/strong&gt; Securely exposing local services behind an ISP CGNAT without opening dangerous ports.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Solution:&lt;/strong&gt; Implemented a &lt;strong&gt;Cloudflare Tunnel&lt;/strong&gt; (Zero Trust) to bypass NAT restrictions while maintaining strict firewall rules.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Architecture:&lt;/strong&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Orchestration:&lt;/strong&gt; Docker Compose managing the *Arr Stack (Media Ops) and Pi-hole.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Networking:&lt;/strong&gt; Tailscale Mesh VPN for secure remote management.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automation:&lt;/strong&gt; Python scripts auditing kernel sensors (Temp/RAM) and triggering Telegram alerts.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;-internal-knowledge-base-modernization&#34;&gt;📄 Internal Knowledge Base Modernization&lt;/h2&gt;
-&lt;p&gt;&lt;em&gt;Docs-as-Code / Automation (at Konecta)&lt;/em&gt;&lt;/p&gt;</description>
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Status:&lt;/strong&gt; &lt;code&gt;Production 🟢&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Tech Stack:&lt;/strong&gt; &lt;code&gt;Docker&lt;/code&gt; &lt;code&gt;Python&lt;/code&gt; &lt;code&gt;Cloudflare Zero Trust&lt;/code&gt; &lt;code&gt;Linux Hardening&lt;/code&gt; &lt;code&gt;Bash&lt;/code&gt;
+&lt;a href=&#34;https://github.com/ezequieldlv/ez-lab&#34;&gt;🔗 View Repository&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>My SRE Roadmap</title>
+      <link>http://localhost:1313/portfolio-sre/roadmap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-sre/roadmap/</guid>
+      <description>From Localhost to Cloud Native: My 9-Phase journey to SRE.</description>
     </item>
   </channel>
 </rss>

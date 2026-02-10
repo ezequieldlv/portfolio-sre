@@ -1,8 +1,29 @@
-# Hugo default output
-/public
-/resources
+# ----------------------------------------------------------------------
+# Hugo & Build Artifacts
+# ----------------------------------------------------------------------
+/public/
+/resources/_gen/
 /.hugo_build.lock
 
-# System files
+# ----------------------------------------------------------------------
+# System & Editor Junk (OS Files)
+# ----------------------------------------------------------------------
 .DS_Store
 Thumbs.db
+Desktop.ini
+._*
+
+# ----------------------------------------------------------------------
+# VS Code / IDE Settings (Personal preferences shouldn't be in repo)
+# ----------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ----------------------------------------------------------------------
+# Dependencies (If you use Node.js/NPM later for themes)
+# ----------------------------------------------------------------------
+node_modules/
+package-lock.json
+yarn.lock
