@@ -22,7 +22,7 @@ Designed and deployed a resilient, self-hosted microservices architecture on a *
 <br>
 <div style="text-align: center; margin-top: 20px;">
   <p style="font-weight: bold; color: #5cb85c; margin-bottom: 5px;">📸 Live Infrastructure Status (Portainer)</p>
-  <img src="images/portainer_dashboard.png" alt="Portainer Dashboard Production" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+  <img src="/images/portainer_dashboard.png" alt="Portainer Dashboard Production" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
 </div>
 <br>
 
@@ -58,12 +58,12 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
   
   <div style="flex: 1; min-width: 300px; text-align: center;">
     <p style="font-weight: bold; color: #d9534f; margin-bottom: 5px;">❌ Before: Legacy Static Site</p>
-    <img src="images/legacy_google_site.png" alt="Legacy Documentation" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+    <img src="/images/legacy_google_site.png" alt="Legacy Documentation" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
   </div>
 
   <div style="flex: 1; min-width: 300px; text-align: center;">
     <p style="font-weight: bold; color: #5cb85c; margin-bottom: 5px;">✅ After: Docs-as-Code (MkDocs)</p>
-    <img src="images/modern_mkdocs.png" alt="Modern MkDocs System" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
+    <img src="/images/modern_mkdocs.png" alt="Modern MkDocs System" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
   </div>
 
 </div>
