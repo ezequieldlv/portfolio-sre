@@ -1,29 +1,20 @@
-# ----------------------------------------------------------------------
-# Hugo & Build Artifacts
-# ----------------------------------------------------------------------
-/public/
-/resources/_gen/
-/.hugo_build.lock
-
-# ----------------------------------------------------------------------
-# System & Editor Junk (OS Files)
-# ----------------------------------------------------------------------
+# --- SISTEMA ---
 .DS_Store
 Thumbs.db
-Desktop.ini
-._*
-
-# ----------------------------------------------------------------------
-# VS Code / IDE Settings (Personal preferences shouldn't be in repo)
-# ----------------------------------------------------------------------
 .vscode/
-.idea/
-*.swp
-*.swo
+*.log
 
-# ----------------------------------------------------------------------
-# Dependencies (If you use Node.js/NPM later for themes)
-# ----------------------------------------------------------------------
-node_modules/
-package-lock.json
-yarn.lock
+# --- SECRETS (Vital) ---
+.env
+*.pem
+*.key
+
+# --- HUGO (Frontend) ---
+frontend/public/
+frontend/resources/
+frontend/.hugo_build.lock
+
+# --- GO (Backend) ---
+backend/main
+backend/*.exe
+backend/*.test

@@ -1,7 +1,6 @@
 .git
 .gitignore
-public
-resources
-node_modules
-Dockerfile
+.github
 README.md
+frontend/public
+backend/main

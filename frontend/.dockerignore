@@ -1,0 +1,9 @@
+.git
+.github
+.gitignore
+Dockerfile
+README.md
+public/
+resources/
+# Ignorar al hermano
+../backend

@@ -1,0 +1,7 @@
+.git
+.gitignore
+Dockerfile
+# Ignorar binarios locales
+main
+# Ignorar al hermano
+../frontend
