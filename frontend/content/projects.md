@@ -71,16 +71,52 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
 
 ---
 
-## 🌐 SRE Portfolio (This Website)
-*Edge Computing / Self-Hosted / CI/CD*
+## 🌐 SRE Portfolio & Live Telemetry
+*Edge Computing / Microservices / CI/CD*
 
-More than just a website, this portfolio is a live demo of my infrastructure skills. Hosted directly on my home cluster, exposed securely to the world.
+More than just a website, this portfolio is a live microservices demo. The frontend (static) is currently fetching real-time telemetry from a **Golang API** running on a separate Docker container within my Raspberry Pi cluster, exposed via Zero Trust.
 
-* **Infrastructure:** Raspberry Pi 5 running Debian (Raspberry Pi OS).
-* **Web Server:** Nginx configured as a Reverse Proxy with strict caching policies.
-* **Security:** Exposed via **Cloudflare Tunnels** (Zero Trust) to bypass CGNAT and enforce HTTPS without opening firewall ports.
-* **CI/CD:** Automated deployment pipeline (Git push -> Live).
+* **Frontend:** Hugo + Nginx (Static Edge)
+* **Backend:** Golang 1.22 REST API (Distroless Container)
+* **Security:** Cloudflare Tunnels (Zero Trust) + Strict CORS Policies.
 
-> **Tech Stack:** `Hugo` `Nginx` `Cloudflare` `Raspberry Pi`
+<div style="background-color: #0d1117; color: #58a6ff; padding: 20px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; border: 1px solid #30363d; margin: 20px 0;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 15px;">
+        <span style="font-weight: bold; color: #c9d1d9;">📡 RPi-5 Cluster Telemetry</span>
+        <span id="api-status-indicator" style="color: #f85149;">🔴 Offline</span>
+    </div>
+    <ul id="telemetry-data" style="list-style: none; padding: 0; margin: 0; line-height: 1.8; color: #c9d1d9; font-size: 0.9em;">
+        <li>> Initializing handshake with api.ez-lab.site... ⏳</li>
+    </ul>
+</div>
+
+<script>
+    async function fetchTelemetry() {
+        try {
+            const response = await fetch('https://api.ez-lab.site/api/health');
+            if (!response.ok) throw new Error('Network response was not ok');
+            
+            const data = await response.json();
+            
+            document.getElementById('api-status-indicator').innerHTML = '🟢 Live';
+            document.getElementById('api-status-indicator').style.color = '#3fb950';
+            
+            const container = document.getElementById('telemetry-data');
+            container.innerHTML = `
+                <li><span style="color: #79c0ff;">$</span> <strong>OS/Arch:</strong> ${data.os}_${data.architecture}</li>
+                <li><span style="color: #79c0ff;">$</span> <strong>Engine:</strong> ${data.go_version}</li>
+                <li><span style="color: #79c0ff;">$</span> <strong>Server Time:</strong> ${data.server_time}</li>
+                <li><span style="color: #79c0ff;">$</span> <strong>Response:</strong> <em>"${data.message}"</em></li>
+            `;
+        } catch (error) {
+            document.getElementById('telemetry-data').innerHTML = 
+                '<li style="color: #f85149;">> [ERR] API connection refused. Backend might be down or blocked by CORS.</li>';
+            console.error("Telemetry Error:", error);
+        }
+    }
+    document.addEventListener("DOMContentLoaded", fetchTelemetry);
+</script>
+
+> **Tech Stack:** `Golang` `Hugo` `Nginx` `Cloudflare` `Docker Networks`
 
 ---

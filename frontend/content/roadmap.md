@@ -36,23 +36,24 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 - [x] **Secrets:** Migration to `.env` files + `.gitignore` policy enforcement.
 - [x] **Encryption:** Strict HTTPS/TLS enforcement for all services.
 
+## ✅ Phase 4: The Builder
+*Focus: Transitioning from "Configuring" to "Building Software".*
+- [x] **Golang Basics:** Syntax, Goroutines, HTTP Standard Library.
+- [x] **Project A:** "Hello SRE" - API returning server telemetry in JSON.
+- [x] **Advanced Docker:** Multi-Stage Builds (Go -> Distroless/Alpine).
+- [x] **Web Server:** Nginx Reverse Proxy for this Portfolio (Self-Hosted).
+
 ---
 
-## 🚧 Phase 4: The Builder (Current Focus)
-*Focus: Transitioning from "Configuring" to "Building Software".*
-- [ ] **Golang Basics:** Syntax, Goroutines, HTTP Standard Library.
-- [ ] **Project A:** "Hello SRE" - API returning server telemetry in JSON.
-- [ ] **Advanced Docker:** Multi-Stage Builds (Go -> Distroless/Alpine).
-- [ ] **Web Server:** Nginx Reverse Proxy for this Portfolio (Self-Hosted).
+## 🚧 Phase 5: Deep Observability (Current Focus)
+*Focus: Moving from basic scripts to enterprise-grade telemetry visualization.*
+- [ ] **Stack:** Prometheus + Grafana (Golden Signals Dashboard).
+- [ ] **Logs:** Centralized aggregation with Loki.
+- [ ] **Health:** Uptime Kuma implementation.
 
 ---
 
 ## 🔮 Future Phases (The Path Forward)
-
-### Phase 5: Deep Observability
-- **Stack:** Prometheus + Grafana (Golden Signals Dashboard).
-- **Logs:** Centralized aggregation with Loki.
-- **Health:** Uptime Kuma implementation.
 
 ### Phase 6: Defensive Hacking (Red Teaming)
 - **Audit:** Vulnerability scanning with Nmap/OpenVAS.
