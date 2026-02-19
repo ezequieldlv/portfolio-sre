@@ -36,6 +36,9 @@ buildExpired = false
   [[params.socialIcons]]
     name = "github"
     url = "https://github.com/ezequieldlv"
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:ezequiel2014.edlv@gmail.com"
 
 # --- MENU ---
 [[menu.main]]

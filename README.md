@@ -20,6 +20,29 @@ A minimalist, high-performance portfolio built with a **Docs-as-Code** philosoph
 * **Networking:** Cloudflare Tunnel (Zero Trust)
 * **CI/CD:** GitHub Actions (Source Control)
 
+## 🏗 Architecture
+
+```mermaid
+graph TD
+    classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
+    classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
+    classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
+    classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
+    classDef hardware fill:#16161e,stroke:#f7768e,stroke-width:2px,color:#c0caf5
+
+    User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
+    Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
+    
+    subgraph "Ez-Lab (Raspberry Pi 5)"
+        Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
+        Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
+        
+        Frontend -.->|Internal Fetch| Backend
+        
+        Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
+    end
+```
+
 ## ⚡ Quick Start (Local)
 
 1.  **Clone the monorepo:**

@@ -82,20 +82,41 @@ More than just a website, this portfolio is a live microservices demo. The front
 
 ### 🏗️ Live Architecture
 
-```mermaid
+<style>
+  pre.mermaid {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px 0;
+  }
+</style>
+
+<pre class="mermaid">
 graph TD
-    User((User / Internet)) -->|HTTPS / SSL| Cloudflare[Cloudflare Edge / Cache]
-    Cloudflare -->|Encrypted Tunnel| Cloudflared[Cloudflared Daemon]
+    %% Definición de colores (Estilo Tokyo Night + Cloudflare)
+    classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
+    classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
+    classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
+    classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
+    classDef hardware fill:#16161e,stroke:#f7768e,stroke-width:2px,color:#c0caf5
+
+    User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
+    Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
     
-    subgraph "Ez-Lab (RPi 5 Cluster)"
-        Cloudflared -->|web-net| Frontend["Portfolio (Hugo/Nginx)"]
-        Cloudflared -->|web-net| Backend["API Telemetry (Go)"]
+    subgraph "Ez-Lab (Raspberry Pi 5)"
+        Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
+        Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
         
-        Frontend -.->|Internal API Call / Fetch| Backend
+        Frontend -.->|Internal Fetch| Backend
         
-        Auditor[Python Telemetry] -->|Hardware Metrics| OS[("Kernel / Sensors")]
+        Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
     end
-```
+</pre>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
 
 <style>
 .terminal-box {
