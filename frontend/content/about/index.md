@@ -30,7 +30,7 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 *Acting as the escalation point for complex connectivity incidents (FTTH/HFC).*
 * **Troubleshooting:** Diagnosed Layer 1-3 network failures using telemetry and packet analysis tools to ensure SLA compliance.
 * **Crisis Management:** Resolved escalated outages, managing communication with frustrated stakeholders during critical downtime.
-* **Optimization:** Initiated the migration of internal troubleshooting guides to a **Docs-as-Code** workflow using MkDocs, reducing search time for agents.
+* **Optimization:** Initiated the migration of internal troubleshooting guides to a **Docs-as-Code** workflow using MkDocs, reducing search time for agents by ~30%.
 
 ### **Customer Support Specialist | Apex America**
 *Dec 2023 - Apr 2024*

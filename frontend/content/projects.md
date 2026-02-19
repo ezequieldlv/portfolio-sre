@@ -80,38 +80,94 @@ More than just a website, this portfolio is a live microservices demo. The front
 * **Backend:** Golang 1.22 REST API (Distroless Container)
 * **Security:** Cloudflare Tunnels (Zero Trust) + Strict CORS Policies.
 
-<div style="background-color: #0d1117; color: #58a6ff; padding: 20px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; border: 1px solid #30363d; margin: 20px 0;">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 15px;">
-        <span style="font-weight: bold; color: #c9d1d9;">📡 RPi-5 Cluster Telemetry</span>
-        <span id="api-status-indicator" style="color: #f85149;">🔴 Offline</span>
+### 🏗️ Live Architecture
+
+```mermaid
+graph TD
+    User((User / Internet)) -->|HTTPS / SSL| Cloudflare[Cloudflare Edge / Cache]
+    Cloudflare -->|Encrypted Tunnel| Cloudflared[Cloudflared Daemon]
+    
+    subgraph "Ez-Lab (RPi 5 Cluster)"
+        Cloudflared -->|web-net| Frontend["Portfolio (Hugo/Nginx)"]
+        Cloudflared -->|web-net| Backend["API Telemetry (Go)"]
+        
+        Frontend -.->|Internal API Call / Fetch| Backend
+        
+        Auditor[Python Telemetry] -->|Hardware Metrics| OS[("Kernel / Sensors")]
+    end
+```
+
+<style>
+.terminal-box {
+    background-color: #1a1b26;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.4);
+    overflow: hidden;
+    margin: 25px 0;
+    border: 1px solid #292e42;
+}
+.terminal-header {
+    background-color: #16161e;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #292e42;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.85rem;
+}
+.terminal-title { color: #a9b1d6; font-weight: 600; letter-spacing: 0.5px; }
+.status-indicator { display: flex; align-items: center; gap: 8px; font-weight: bold; }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; }
+.terminal-body {
+    padding: 20px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: #c0caf5;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+.prompt { color: #7aa2f7; font-weight: bold; margin-right: 10px; user-select: none; }
+.val { color: #9ece6a; }
+.err { color: #f7768e; }
+</style>
+
+<div class="terminal-box">
+    <div class="terminal-header">
+        <span class="terminal-title">📡 root@ez-lab:~# ./telemetry.sh</span>
+        <span id="api-status" class="status-indicator" style="color: #565f89;">
+            <div id="api-dot" class="status-dot" style="background-color: #565f89;"></div> ⏳ Wait
+        </span>
     </div>
-    <ul id="telemetry-data" style="list-style: none; padding: 0; margin: 0; line-height: 1.8; color: #c9d1d9; font-size: 0.9em;">
-        <li>> Initializing handshake with api.ez-lab.site... ⏳</li>
-    </ul>
+    <div class="terminal-body">
+        <ul id="telemetry-data" style="list-style: none; padding: 0; margin: 0;">
+            <li><span class="prompt">$</span> Establishing Zero-Trust handshake...</li>
+        </ul>
+    </div>
 </div>
 
 <script>
     async function fetchTelemetry() {
         try {
             const response = await fetch('https://api.ez-lab.site/api/health');
-            if (!response.ok) throw new Error('Network response was not ok');
-            
+            if (!response.ok) throw new Error('Network error');
             const data = await response.json();
             
-            document.getElementById('api-status-indicator').innerHTML = '🟢 Live';
-            document.getElementById('api-status-indicator').style.color = '#3fb950';
+            // Actualizar el header a verde brillante
+            document.getElementById('api-status').innerHTML = '<div class="status-dot" style="background-color: #9ece6a; box-shadow: 0 0 10px #9ece6a;"></div> Live';
+            document.getElementById('api-status').style.color = '#9ece6a';
             
+            // Inyectar datos con formato
             const container = document.getElementById('telemetry-data');
             container.innerHTML = `
-                <li><span style="color: #79c0ff;">$</span> <strong>OS/Arch:</strong> ${data.os}_${data.architecture}</li>
-                <li><span style="color: #79c0ff;">$</span> <strong>Engine:</strong> ${data.go_version}</li>
-                <li><span style="color: #79c0ff;">$</span> <strong>Server Time:</strong> ${data.server_time}</li>
-                <li><span style="color: #79c0ff;">$</span> <strong>Response:</strong> <em>"${data.message}"</em></li>
+                <li><span class="prompt">$</span> OS_ARCH  <span class="val">=></span> ${data.os}_${data.architecture}</li>
+                <li><span class="prompt">$</span> ENGINE   <span class="val">=></span> ${data.go_version}</li>
+                <li><span class="prompt">$</span> SYSTIME  <span class="val">=></span> ${data.server_time}</li>
+                <li><span class="prompt">$</span> RESPONSE <span class="val">=></span> "${data.message}"</li>
             `;
         } catch (error) {
-            document.getElementById('telemetry-data').innerHTML = 
-                '<li style="color: #f85149;">> [ERR] API connection refused. Backend might be down or blocked by CORS.</li>';
-            console.error("Telemetry Error:", error);
+            document.getElementById('api-status').innerHTML = '<div class="status-dot" style="background-color: #f7768e; box-shadow: 0 0 10px #f7768e;"></div> Offline';
+            document.getElementById('api-status').style.color = '#f7768e';
+            document.getElementById('telemetry-data').innerHTML = `<li><span class="prompt">$</span> <span class="err">FATAL: Connection refused by edge gateway.</span></li>`;
         }
     }
     document.addEventListener("DOMContentLoaded", fetchTelemetry);

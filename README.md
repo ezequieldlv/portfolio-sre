@@ -24,7 +24,7 @@ A minimalist, high-performance portfolio built with a **Docs-as-Code** philosoph
 
 1.  **Clone the monorepo:**
     ```bash
-    git clone [https://github.com/tu-usuario/portfolio-sre.git](https://github.com/tu-usuario/portfolio-sre.git)
+    git clone [https://github.com/ezequieldlv/portfolio-sre](https://github.com/ezequieldlv/portfolio-sre)
     cd portfolio-sre
     ```
 
