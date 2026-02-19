@@ -1,7 +1,5 @@
 baseURL = "https://ez-lab.site/"
 
-relativeURLs = true
-
 languageCode = "en"
 title = "Ezequiel De la Vega | SRE Portfolio"
 theme = "PaperMod"
