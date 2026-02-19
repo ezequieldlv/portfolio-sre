@@ -12,6 +12,7 @@ buildFuture = false
 buildExpired = false
 
 [params]
+  author = "Ezequiel De la Vega"
   defaultTheme = "auto"
   ShowReadingTime = false
   ShowShareButtons = false
