@@ -16,7 +16,7 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 
 
 <div style="text-align: center; margin: 2rem 0;">
-    <a href="cv.pdf" target="_blank" style="background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    <a href="Ezequiel_De_la_Vega_SRE_Resume.pdf" target="_blank" style="background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
        📄 Download SRE Resume
     </a>
 </div>
