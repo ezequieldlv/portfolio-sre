@@ -45,20 +45,23 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🚧 Phase 5: Deep Observability (Current Focus)
-*Focus: Moving from basic scripts to enterprise-grade telemetry visualization.*
-- [ ] **Stack:** Prometheus + Grafana (Golden Signals Dashboard).
-- [ ] **Logs:** Centralized aggregation with Loki.
-- [ ] **Health:** Uptime Kuma implementation.
+## ✅ Phase 5: Deep Observability (Completed)
+*Focus: Moved from basic scripts to enterprise-grade telemetry and visualization.*
+- [x] **Stack:** Prometheus + Grafana (Golden Signals Dashboard).
+- [x] **Logs:** Centralized aggregation with Loki.
+- [x] **Health:** Uptime Kuma implementation & Public Status Page.
+
+---
+
+## 🚧 Phase 6: Defensive Hacking & Red Teaming (Current Focus)
+*Focus: Transitioning from builder to attacker. Auditing and hardening the Zero Trust infrastructure.*
+- [ ] **Audit:** Vulnerability scanning with Nmap/OpenVAS.
+- [ ] **Training:** TryHackMe (Pre-Security & Jr. Penetration Tester paths).
+- [ ] **Hardening:** Auditing exposed headers and configurations.
 
 ---
 
 ## 🔮 Future Phases (The Path Forward)
-
-### Phase 6: Defensive Hacking (Red Teaming)
-- **Audit:** Vulnerability scanning with Nmap/OpenVAS.
-- **Training:** TryHackMe (Pre-Security & Jr. Penetration Tester paths).
-- **Hardening:** Auditing exposed headers and configurations.
 
 ### Phase 7: CI/CD & GitOps
 - **Pipeline:** GitHub Actions for automated testing/building on `git push`.
