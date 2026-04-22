@@ -67,7 +67,7 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 *Focus: Automating the software delivery pipeline.*
 - [x] **CI (Continuous Integration):** GitHub Actions implemented for automated testing and container building on `git push`.
 - [x] **Registry:** Migration to GitHub Container Registry (GHCR) for secure, private image hosting.
-- [ ] **CD (Continuous Deployment):** Watchtower implementation to automatically update running containers.
+- [x] **CD (Continuous Deployment):** Watchtower implementation to automatically update running containers.
 - [ ] **Chaos Engineering:** Resilience testing via automated service restarts.
 
 ---
