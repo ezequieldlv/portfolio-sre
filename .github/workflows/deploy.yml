@@ -1,0 +1,46 @@
+name: Build and Push Monorepo Images
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: ghcr.io
+  USERNAME: ${{ github.actor }} # Esto agarrará tu usuario "ezequieldlv"
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.USERNAME }}
+          password: ${{ secrets.CR_PAT }}
+
+      # --- CONSTRUIR Y SUBIR BACKEND ---
+      - name: Build and push Backend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./backend # Ruta a la carpeta del backend
+          file: ./backend/Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/ez-backend:latest
+
+      # --- CONSTRUIR Y SUBIR FRONTEND ---
+      - name: Build and push Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: ./frontend # Ruta a la carpeta del frontend
+          file: ./frontend/Dockerfile
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.USERNAME }}/ez-frontend:latest

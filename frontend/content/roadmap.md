@@ -53,20 +53,26 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🚧 Phase 6: Defensive Hacking & Red Teaming (Current Focus)
+## ✅ Phase 6: Defensive Hacking & Red Teaming (Completed)
 *Focus: Transitioning from builder to attacker. Auditing and hardening the Zero Trust infrastructure.*
-- [ ] **Audit:** Vulnerability scanning with Nmap/OpenVAS.
-- [ ] **Training:** TryHackMe (Pre-Security & Jr. Penetration Tester paths).
-- [ ] **Hardening:** Auditing exposed headers and configurations.
+- [x] **Audit:** Vulnerability scanning on LAN (Nmap) & routing fixes.
+- [x] **Web to OS Escalation:** Bypassed CMS logins via LFI and PHP Wrappers.
+- [x] **Fileless Execution:** In-memory reverse shells bypassing disk writes.
+- [x] **Privilege Escalation:** SUID binary abuse & sudoers misconfigurations to achieve Root.
+- [x] **Corporate Defense:** Active Directory auditing (AS-REP Roasting & DCSync awareness).
+
+---
+
+## 🚧 Phase 7: CI/CD & GitOps (Current Focus)
+*Focus: Automating the software delivery pipeline.*
+- [x] **CI (Continuous Integration):** GitHub Actions implemented for automated testing and container building on `git push`.
+- [x] **Registry:** Migration to GitHub Container Registry (GHCR) for secure, private image hosting.
+- [ ] **CD (Continuous Deployment):** Watchtower implementation to automatically update running containers.
+- [ ] **Chaos Engineering:** Resilience testing via automated service restarts.
 
 ---
 
 ## 🔮 Future Phases (The Path Forward)
-
-### Phase 7: CI/CD & GitOps
-- **Pipeline:** GitHub Actions for automated testing/building on `git push`.
-- **GitOps:** Automated container updates (Watchtower) & IaC synchronization.
-- **Chaos:** Resilience testing via random service restarts.
 
 ### Phase 8: Hybrid Cloud & IaC
 - **Backup:** Encrypted backups to AWS S3 (Glacier).
