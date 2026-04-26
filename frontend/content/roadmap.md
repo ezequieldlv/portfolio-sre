@@ -63,21 +63,22 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🚧 Phase 7: CI/CD & GitOps (Current Focus)
+## ✅ Phase 7: CI/CD & GitOps (Completed)
 *Focus: Automating the software delivery pipeline.*
-- [x] **CI (Continuous Integration):** GitHub Actions implemented for automated testing and container building on `git push`.
-- [x] **Registry:** Migration to GitHub Container Registry (GHCR) for secure, private image hosting.
-- [x] **CD (Continuous Deployment):** Watchtower implementation to automatically update running containers.
-- [ ] **Chaos Engineering:** Resilience testing via automated service restarts.
+- [x] **CI (Continuous Integration):** ...
+- [x] **Registry:** ...
+- [x] **CD (Continuous Deployment):** ...
+- [x] **Chaos Engineering:** Resilience testing via automated service restarts (Python Agent).
 
 ---
 
-## 🔮 Future Phases (The Path Forward)
+## 🚧 Phase 8: Hybrid Cloud & IaC (Current Focus)
+*Focus: Introducing to AWS environment.*
+- [] **Backup:** Encrypted backups to AWS S3 (Glacier).
+- [] **IaC:** Terraform provisioning (AWS EC2).
+- [] **Config Mgmt:** Ansible playbooks for automated server setup.
 
-### Phase 8: Hybrid Cloud & IaC
-- **Backup:** Encrypted backups to AWS S3 (Glacier).
-- **IaC:** Terraform provisioning (AWS EC2).
-- **Config Mgmt:** Ansible playbooks for automated server setup.
+## 🔮 Future Phases (The Path Forward)
 
 ### Phase 9: Orchestration (The Migration)
 - **K8s:** Migration to **K3s** (Lightweight Kubernetes).

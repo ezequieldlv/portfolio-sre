@@ -36,9 +36,10 @@ Designed and deployed a resilient, self-hosted microservices architecture on a *
 
 I am publicly documenting my transition to Site Reliability Engineering through a structured **9-Phase Roadmap**.
 
-* **Phase 1-3 (Completed):** Infrastructure Hardening, Containerization, and Security Fortress.
-* **Phase 4 (Current):** "The Builder" - Learning Golang and Advanced Docker Builds.
-* **Future Phases:** Deep Observability (Prometheus/Grafana), Kubernetes Orchestration, and AWS Cloud Migration.
+* **Phase 1-6 (Completed):** Infrastructure Hardening, Security Fortress, and Offensive Teaming.
+* **Phase 7 (Completed):** CI/CD & GitOps Automation.
+* **Phase 8 (Current):** Hybrid Cloud & Infrastructure as Code (AWS/Terraform).
+* **Future Phases:** Kubernetes Orchestration.
 
 > [👉 **View Full Roadmap & Progress**]({{< ref "roadmap.md" >}})
 

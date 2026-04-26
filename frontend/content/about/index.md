@@ -16,7 +16,7 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 
 
 <div style="text-align: center; margin: 2rem 0;">
-    <a href="Ezequiel_De_la_Vega_SRE_Resume.pdf" target="_blank" style="background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+    <a href="resume.pdf" target="_blank" style="background-color: #333; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">
        📄 Download SRE Resume
     </a>
 </div>
@@ -25,8 +25,8 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 
 ## 💼 Professional Experience
 
-### **Technical Support Analyst (Tier 2) | Konecta (Personal Flow)**
-*Sep 2024 - Present*
+### **Technical Support Analyst (Tier 2) | Konecta (Telecom Argentina - Personal Flow)**
+*Sep 2024 - Apr 2026*
 *Acting as the escalation point for complex connectivity incidents (FTTH/HFC).*
 * **Troubleshooting:** Diagnosed Layer 1-3 network failures using telemetry and packet analysis tools to ensure SLA compliance.
 * **Crisis Management:** Resolved escalated outages, managing communication with frustrated stakeholders during critical downtime.
@@ -40,16 +40,21 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 
 ## 🛠️ Technical Arsenal
 
-* **Core:** Linux Administration (Arch, Debian), TCP/IP, DNS, Subnetting.
-* **Infrastructure:** Docker, Docker Compose, Portainer, VirtualBox.
-* **Automation:** Python (Scripting & Automation), Bash, Git/GitHub.
-* **DevOps Tools:** MkDocs (Docs-as-Code), Hugo, CI/CD Concepts.
+* **Cloud & Networking:** AWS (EC2, VPC, IAM, Security Groups), TCP/IP, DNS, Subnetting, Cloudflare Zero Trust.
+* **Infrastructure & Orchestration:** Docker, Docker Compose, Portainer, Linux Administration (Arch, Debian).
+* **CI/CD & Automation:** GitHub Actions, Watchtower (Zero-Downtime Deployments), Bash Scripting.
+* **Programming & Chaos Engineering:** Python (System Automation & Chaos Agents), Golang (REST APIs).
+* **DevOps Tools:** MkDocs (Docs-as-Code), Hugo, Git/GitHub.
 * **Languages:** Spanish (Native), English (B2 - Professional Working Proficiency).
 
 ---
 
-## 🎓 Education
+## 🎓 Education & Achievements
 
 * **Information Systems Engineering** | UTN - Córdoba (Expected 2027)
-    * *Focus:* Operating Systems, Networks, Algorithms.
+    * *Focus:* Operating Systems, Networks, Algorithms, Systems Architecture.
+* **AWS Launchpad for Students** | UTN FRC (2026)
+    * *Focus:* Cloud infrastructure fundamentals and AWS core services.
+* **1st Place - Robotics Competition** | Roboteam Experience STEM 
+    * *Project:* Designed and programmed the logic for an autonomous Arduino rover, integrating hardware and low-level software.
 * **Full Stack Java Developer** | Argentina Programa 4.0 (2022)
