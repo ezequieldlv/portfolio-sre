@@ -6,17 +6,15 @@ hideMeta: true
 
 A showcase of my journey building resilient infrastructure and automating workflows.
 
-## 🛡️ Ez-Lab: Hybrid Cloud Infrastructure
-*Infrastructure as Code / DevSecOps / Self-Hosted*
+## 🛡️ Ez-Lab: Cloud-Native Edge Infrastructure
+*Infrastructure as Code / DevSecOps / GitOps*
 
-Designed and deployed a resilient, self-hosted microservices architecture on a **Raspberry Pi 5**. This project simulates a production environment protected by Zero Trust principles.
+Architected and provisioned a resilient, bare-metal microservices environment on a **Raspberry Pi 5**. This project operates as a production edge cluster protected by Zero Trust principles and automated delivery pipelines.
 
-* **The Challenge:** Securely exposing local services behind an ISP CGNAT without opening dangerous ports.
-* **The Solution:** Implemented a **Cloudflare Tunnel** (Zero Trust) to bypass NAT restrictions while maintaining strict firewall rules.
-* **Architecture:**
-    * **Orchestration:** Docker Compose managing the *Arr Stack (Media Ops) and Pi-hole.
-    * **Networking:** Tailscale Mesh VPN for secure remote management.
-    * **Automation:** Python scripts auditing kernel sensors (Temp/RAM) and triggering Telegram alerts.
+* **Architecture & Orchestration:** Docker Compose managing the *Arr Stack, internal APIs, and Pi-hole for network-wide DNS filtering.
+* **CI/CD & GitOps:** Automated a zero-downtime software delivery pipeline utilizing **GitHub Actions** and **Watchtower** to build, push to a private registry (GHCR), and deploy cross-platform containers.
+* **Zero Trust Security:** Secured internal network traffic and bypassed ISP CGNAT by deploying **Cloudflare Tunnels** and **Tailscale** mesh VPNs, successfully eliminating public-facing open ports.
+* **Chaos Engineering & Telemetry:** Custom Python scripts auditing kernel sensors (Temp/RAM) and simulating container failures to validate auto-recovery policies, triggering Telegram alerts.
 * **Status:** `Production 🟢`
 
 <br>
@@ -26,7 +24,7 @@ Designed and deployed a resilient, self-hosted microservices architecture on a *
 </div>
 <br>
 
-> **Tech Stack:** `Docker` `Python` `Cloudflare Zero Trust` `Linux Hardening` `Bash`
+> **Tech Stack:** `Docker` `GitHub Actions` `Cloudflare Zero Trust` `Python` `Linux` `Bash`
 > [🔗 View Repository](https://github.com/ezequieldlv/ez-lab)
 
 ---
@@ -100,17 +98,27 @@ graph TD
     classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
     classDef hardware fill:#16161e,stroke:#f7768e,stroke-width:2px,color:#c0caf5
+    classDef cicd fill:#24283b,stroke:#bb9af7,stroke-width:2px,color:#c0caf5
 
     User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
     Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
     
+    GitHub((🐙 GitHub Actions)):::cicd -.->|Push Image| GHCR[(GHCR Registry)]:::cicd
+    
     subgraph "Ez-Lab (Raspberry Pi 5)"
-        Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
-        Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
+        direction TB
         
-        Frontend -.->|Internal Fetch| Backend
+        subgraph "Web Traffic & Apps"
+            Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
+            Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
+            Frontend -.->|Internal Fetch| Backend
+        end
         
-        Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
+        subgraph "Operations & GitOps"
+            Watchtower["🔄 Watchtower"]:::cicd -.->|Pull & Deploy| GHCR
+            Watchtower -->|Update Containers| Frontend
+            Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
+        end
     end
 </pre>
 
