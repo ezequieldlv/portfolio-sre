@@ -14,7 +14,7 @@ Architected and provisioned a resilient, bare-metal microservices environment on
 * **Architecture & Orchestration:** Docker Compose managing the *Arr Stack, internal APIs, and Pi-hole for network-wide DNS filtering.
 * **CI/CD & GitOps:** Automated a zero-downtime software delivery pipeline utilizing **GitHub Actions** and **Watchtower** to build, push to a private registry (GHCR), and deploy cross-platform containers.
 * **Zero Trust Security:** Secured internal network traffic and bypassed ISP CGNAT by deploying **Cloudflare Tunnels** and **Tailscale** mesh VPNs, successfully eliminating public-facing open ports.
-* **Chaos Engineering & Telemetry:** Custom Python scripts auditing kernel sensors (Temp/RAM) and simulating container failures to validate auto-recovery policies, triggering Telegram alerts.
+* **Observability & Chaos Engineering:** Deployed Prometheus and Grafana for real-time cluster telemetry and visualization, alongside custom Chaos Agents simulating container failures to validate auto-recovery policies.
 * **Status:** `Production 🟢`
 
 <br>
@@ -24,7 +24,7 @@ Architected and provisioned a resilient, bare-metal microservices environment on
 </div>
 <br>
 
-> **Tech Stack:** `Docker` `GitHub Actions` `Cloudflare Zero Trust` `Python` `Linux` `Bash`
+> **Tech Stack:** `Docker` `GitHub Actions` `Cloudflare Zero Trust` `Python` `Linux` `Bash` `Prometheus` `Grafana`
 > [🔗 View Repository](https://github.com/ezequieldlv/ez-lab)
 
 ---
@@ -97,7 +97,7 @@ graph TD
     classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
     classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
-    classDef hardware fill:#16161e,stroke:#f7768e,stroke-width:2px,color:#c0caf5
+    classDef obs fill:#16161e,stroke:#e0af68,stroke-width:2px,color:#c0caf5
     classDef cicd fill:#24283b,stroke:#bb9af7,stroke-width:2px,color:#c0caf5
 
     User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
@@ -105,7 +105,7 @@ graph TD
     
     GitHub((🐙 GitHub Actions)):::cicd -.->|Push Image| GHCR[(GHCR Registry)]:::cicd
     
-    subgraph "Ez-Lab (Raspberry Pi 5)"
+    subgraph "Ez-Lab (Raspberry Pi 5 / Docker Compose)"
         direction TB
         
         subgraph "Web Traffic & Apps"
@@ -114,10 +114,11 @@ graph TD
             Frontend -.->|Internal Fetch| Backend
         end
         
-        subgraph "Operations & GitOps"
+        subgraph "Observability & GitOps"
             Watchtower["🔄 Watchtower"]:::cicd -.->|Pull & Deploy| GHCR
             Watchtower -->|Update Containers| Frontend
-            Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
+            Prometheus["📊 Prometheus"]:::obs -.->|Scrape Metrics| Backend
+            Grafana["📈 Grafana"]:::obs -.->|Visualize| Prometheus
         end
     end
 </pre>

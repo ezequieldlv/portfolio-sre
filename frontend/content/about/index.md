@@ -6,11 +6,11 @@ hideMeta: true
 
 ## 👨‍💻 Profile
 
-I am a **Systems Engineering student** at UTN FRC and an aspiring **Site Reliability Engineer (SRE)**.
+I am a **Systems Engineering student** at UTN FRC and a **Junior Site Reliability Engineer (SRE)**.
 
-My journey began in **Tier 2 Technical Support**, handling critical ISP-level incidents. This experience gave me a unique perspective on reliability: I don't just build systems; I understand how they fail under pressure and how to troubleshoot them efficiently.
+My operational foundation was forged in **Tier 2 Technical Support (ISP Level)**, handling critical L2/L3 network incidents under strict SLAs. This gave me a unique perspective on system reliability: I don't just "configure" software; I treat infrastructure as a rigorous engineering discipline where security and resilience are built-in from day one.
 
-Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transition from "Localhost" to "Cloud Native Architect". I am passionate about **Infrastructure as Code**, **Linux Hardening** (Arch is my daily driver), and applying **Biohacking principles** to optimize cognitive performance.
+Currently, I am executing a **10-Phase SRE Roadmap**, managing a bare-metal edge cluster, and transitioning into AWS Hybrid Cloud architectures. I am passionate about **Infrastructure as Code**, **Zero Trust Networks** (Arch Linux is my daily driver), and applying **Biohacking principles** to optimize cognitive performance and deep work sessions.
 
 ---
 
@@ -43,6 +43,7 @@ Currently, I am executing a rigorous **9-Phase Engineering Roadmap** to transiti
 * **Cloud & Networking:** AWS (EC2, VPC, IAM, Security Groups), TCP/IP, DNS, Subnetting, Cloudflare Zero Trust.
 * **Infrastructure & Orchestration:** Docker, Docker Compose, Portainer, Linux Administration (Arch, Debian).
 * **CI/CD & Automation:** GitHub Actions, Watchtower (Zero-Downtime Deployments), Bash Scripting.
+* **Observability & Telemetry:** Prometheus, Grafana.
 * **Programming & Chaos Engineering:** Python (System Automation & Chaos Agents), Golang (REST APIs).
 * **DevOps Tools:** MkDocs (Docs-as-Code), Hugo, Git/GitHub.
 * **Languages:** Spanish (Native), English (B2 - Professional Working Proficiency).
