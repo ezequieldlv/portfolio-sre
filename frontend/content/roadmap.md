@@ -74,8 +74,8 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ## 🚧 Phase 8: Hybrid Cloud & IaC (Current Focus)
 *Focus: Introducing to AWS environment.*
+- [X] **IaC:** Terraform provisioning (AWS EC2).
 - [] **Backup:** Encrypted backups to AWS S3 (Glacier).
-- [] **IaC:** Terraform provisioning (AWS EC2).
 - [] **Config Mgmt:** Ansible playbooks for automated server setup.
 
 ## 🔮 Future Phases (The Path Forward)

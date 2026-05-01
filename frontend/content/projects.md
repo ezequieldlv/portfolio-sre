@@ -24,7 +24,8 @@ Architected and provisioned a resilient, bare-metal microservices environment on
 </div>
 <br>
 
-> **Tech Stack:** `Docker` `GitHub Actions` `Cloudflare Zero Trust` `Python` `Linux` `Bash` `Prometheus` `Grafana` <br>
+> **Tech Stack:** `Docker` `GitHub Actions` `Cloudflare Zero Trust` `Python` `Linux` `Bash` `Prometheus` `Grafana`
+
 > [🔗 View Repository](https://github.com/ezequieldlv/ez-lab)
 
 ---
