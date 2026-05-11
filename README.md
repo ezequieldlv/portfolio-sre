@@ -1,51 +1,44 @@
-# 🚀 SRE Portfolio (Monorepo)
+# 🚀 SRE Portfolio (App Repository)
 
-A minimalist, high-performance portfolio built with a **Docs-as-Code** philosophy. Designed to showcase skills in **Site Reliability Engineering**, **Linux Administration**, and **Microservices Architecture**.
+A minimalist, high-performance portfolio built with a **Docs-as-Code** philosophy. This repository contains the application layer (Microservices) of my personal infrastructure, designed to showcase my skills in **Go**, **Static Site Generation**, and **Optimized Containerization**.
 
 ## 🛠 Tech Stack
 
-### Frontend (Web)
+### Frontend (Web Service)
 * **Engine:** Hugo (Static Site Generator)
 * **Theme:** PaperMod (Customized "Invictus" SRE Theme)
-* **Server:** Nginx (Alpine)
+* **Web Server:** Nginx (Alpine-based, ultra-lightweight)
 
-### Backend (API)
+### Backend (API Service)
 * **Language:** Golang 1.22
-* **Architecture:** REST API exposing system telemetry
-* **Container:** Distroless/Alpine (Multi-stage build)
+* **Architecture:** REST API exposing live server telemetry
+* **Container:** Distroless/Alpine (Multi-stage build for zero-vulnerability footprint)
 
-### Infrastructure
-* **Host:** Raspberry Pi 5 (Home Lab Cluster)
+### Delivery & CI/CD
+* **Source Control:** Git / GitHub
+* **Pipelines:** GitHub Actions (Automated Linting, Build, and Multi-architecture Image Push)
 * **Orchestration:** Docker Compose
-* **Networking:** Cloudflare Tunnel (Zero Trust)
-* **CI/CD:** GitHub Actions (Source Control)
 
-## 🏗 Architecture
+## 🏗 Microservices Topology
 
 ```mermaid
 graph TD
     classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
-    classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
-    classDef hardware fill:#16161e,stroke:#f7768e,stroke-width:2px,color:#c0caf5
+    classDef cicd fill:#1a1b26,stroke:#e0af68,stroke-width:2px,color:#c0caf5
 
-    User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
-    Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
+    User((🌐 Internet)):::user -->|HTTPS / WAF| CF{☁️ Cloudflare Edge}:::cf
+    CF -->|Tunnel| Frontend["🖥️ Web Server (Nginx + Hugo)"]:::app
+    Frontend -.->|Internal API Fetch| Backend["⚙️ Telemetry API (Go)"]:::app
     
-    subgraph "Ez-Lab (Raspberry Pi 5)"
-        Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
-        Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
-        
-        Frontend -.->|Internal Fetch| Backend
-        
-        Auditor["🐍 Python Auditor"]:::hardware -->|Hardware Metrics| OS[("🌡️ Kernel/Sensors")]:::hardware
-    end
+    GitHub((🐙 GitHub Actions)):::cicd -.->|CI/CD Pipeline| Frontend
+    GitHub -.->|CI/CD Pipeline| Backend
 ```
 
-## ⚡ Quick Start (Local)
+## ⚡ Quick Start (Local Development)
 
-1.  **Clone the monorepo:**
+1.  **Clone the repository:**
     ```bash
     git clone [https://github.com/ezequieldlv/portfolio-sre](https://github.com/ezequieldlv/portfolio-sre)
     cd portfolio-sre
@@ -55,17 +48,14 @@ graph TD
     ```bash
     docker compose up -d
     ```
-    *Access Frontend at `http://localhost:8095`*
-    *Access Backend at `http://localhost:8585`*
+    *Access Frontend at `http://localhost:8095`* *Access Backend at `http://localhost:8585`*
 
-## 🗺 Roadmap
-- [x] Base Design & Content (Hugo)
-- [x] Backend API Development (Golang)
-- [x] Docker Containerization (Multi-Stage)
-- [x] Deploy on Raspberry Pi 5 (Home Lab)
-- [x] Network Segmentation & Nginx Reverse Proxy
-- [ ] Deep Observability (Prometheus/Grafana)
-- [ ] Kubernetes Migration (K3s)
+## 🗺 Application Roadmap
+- [x] Base Design & Markdown Content (Hugo)
+- [x] Backend Telemetry API Development (Golang)
+- [x] Optimized Dockerfiles (Multi-Stage & Distroless)
+- [x] Local Orchestration (docker-compose.yml)
+- [x] CI/CD Pipeline Implementation (GitHub Actions)
 
 ---
-*Created by Ez | 2026*
+*Developed by Ezequiel | Running on the `ez-lab` edge node.*
