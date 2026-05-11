@@ -4,7 +4,7 @@ Thumbs.db
 .vscode/
 *.log
 
-# --- SECRETS (Vital) ---
+# --- SECRETS ---
 .env
 *.pem
 *.key

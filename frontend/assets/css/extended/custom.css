@@ -4,16 +4,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-    /* PALETA: OCÉANO PROFUNDO & PLATA */
-    --theme: #0b1021;        /* Fondo: Azul Noche Profundo */
-    --entry: #111a33;        /* Tarjetas */
-    --primary: #cbd5e1;      /* Texto general: Gris Hielo (Slate 300) */
-    --secondary: #64748b;    /* Texto secundario: Gris Muted (Slate 500) */
+    --theme: #0b1021;       
+    --entry: #111a33;       
+    --primary: #cbd5e1;      
+    --secondary: #64748b;   
     
-    /* EL ACENTO: "Azul Marino tirando a Verde" (Teal) */
-    --accent: #93c5fd;       /* Teal 400 - Fresco, técnico */
+    --accent: #93c5fd;      
     
-    --border: #1e293b;       /* Bordes sutiles */
+    --border: #1e293b;       
 }
 
 /* 2. BASE Y LAYOUT */
@@ -40,9 +38,8 @@ p, li {
     font-weight: 300;
 }
 
-/* --- TÍTULOS PRINCIPALES (H1, H2): PLATA / GRIS (Sobrios) --- */
+/* --- TÍTULOS PRINCIPALES (H1, H2) --- */
 h1, .entry-title {
-    /* Gradiente muy sutil de Blanco a Gris (Efecto Acero) */
     background: linear-gradient(to bottom, #f1f5f9, #94a3b8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -51,16 +48,16 @@ h1, .entry-title {
 }
 
 h2 {
-    color: #e2e8f0 !important; /* Plata solido */
+    color: #e2e8f0 !important; 
     margin-top: 40px;
 }
 
-/* --- SUBTÍTULOS (H3): Ahora en Plata Sobrio --- */
+/* --- SUBTÍTULOS (H3) --- */
 h3 {
-    color: #e2e8f0 !important; /* Blanco Plata (Igual que el resto del texto) */
+    color: #e2e8f0 !important; 
     font-size: 1.1rem;
     margin-top: 35px;
-    border-bottom: 1px solid #1e293b; /* La línea de abajo ahora es gris oscuro sutil */
+    border-bottom: 1px solid #1e293b; 
     padding-bottom: 5px;
     display: inline-block;
     font-weight: 600;
@@ -68,15 +65,15 @@ h3 {
 
 /* 4. ENLACES */
 a {
-    color: #e2e8f0; /* Blanco/Plata por defecto */
+    color: #e2e8f0; 
     text-decoration: none !important;
     border-bottom: none !important;
     transition: all 0.3s ease;
 }
 
 a:hover {
-    color: var(--accent); /* Se ilumina en Turquesa al pasar el mouse */
-    text-shadow: 0 0 8px rgba(147, 197, 253, 0.3)   ; /* Glow suave */
+    color: var(--accent); 
+    text-shadow: 0 0 8px rgba(147, 197, 253, 0.3)   ; 
 }
 
 .anchor { display: none !important; } /* Ocultar el # */
@@ -84,7 +81,7 @@ a:hover {
 /* 5. TECH BADGES */
 code {
     background-color: #0f172a !important;
-    color: var(--accent) !important; /* Texto Turquesa */
+    color: var(--accent) !important; 
     border: 1px solid #1e293b;
     border-radius: 4px;
     padding: 3px 8px;
@@ -103,7 +100,7 @@ code {
 
 .progress-bar {
     background-color: #1e293b; 
-    height: 8px; /* Un poco más gruesas para que luzca el color */
+    height: 8px;
     border-radius: 4px;
     margin-bottom: 25px;
     margin-top: 8px;
@@ -154,21 +151,20 @@ code {
     .gallery-container { flex-direction: column; }
 }
 
-/* Estilo del Botón de Descarga */
 .btn-download {
     display: inline-block;
     padding: 12px 24px;
-    border: 1px solid var(--accent); /* Borde del color que elijas */
+    border: 1px solid var(--accent); 
     border-radius: 5px;
     color: var(--primary) !important;
     font-family: 'JetBrains Mono', monospace;
-    background: rgba(255, 255, 255, 0.05); /* Fondo muy sutil */
+    background: rgba(255, 255, 255, 0.05); 
     transition: all 0.3s ease;
 }
 
 .btn-download:hover {
-    background: var(--accent); /* Se rellena de azul al pasar el mouse */
-    color: #0b1021 !important; /* Letras oscuras para contraste */
-    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); /* Brillo suave */
+    background: var(--accent); 
+    color: #0b1021 !important;
+    box-shadow: 0 0 15px rgba(96, 165, 250, 0.4); 
     transform: translateY(-2px);
 }
