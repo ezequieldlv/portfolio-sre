@@ -40,13 +40,14 @@ Currently, I am executing a **10-Phase SRE Roadmap**, managing a bare-metal edge
 
 ## 🛠️ Technical Arsenal
 
-* **Cloud & Networking:** AWS (EC2, VPC, IAM, Security Groups), TCP/IP, DNS, Subnetting, Cloudflare Zero Trust.
-* **Infrastructure & Orchestration:** Docker, Docker Compose, Portainer, Linux Administration (Arch, Debian).
-* **CI/CD & Automation:** GitHub Actions, Watchtower (Zero-Downtime Deployments), Bash Scripting.
-* **Observability & Telemetry:** Prometheus, Grafana.
-* **Programming & Chaos Engineering:** Python (System Automation & Chaos Agents), Golang (REST APIs).
-* **DevOps Tools:** MkDocs (Docs-as-Code), Hugo, Git/GitHub.
-* **Languages:** Spanish (Native), English (B2 - Professional Working Proficiency).
+* **Cloud & Architecture:** AWS (EC2, VPC, IAM, RDS, S3, Secrets Manager).
+* **Infrastructure as Code (IaC):** Terraform (Remote Backend, Modules), Ansible.
+* **Networking & Security:** Zero Trust Networks (Cloudflare, Tailscale), TCP/IP, DNS, Subnetting, UFW.
+* **Serverless & Observability:** AWS Lambda, Amazon SNS, CloudWatch, Prometheus, Grafana, Loki.
+* **Containerization:** Docker, Docker Compose, Portainer.
+* **CI/CD & GitOps:** GitHub Actions, Watchtower (Zero-Downtime Deployments).
+* **Programming & Scripting:** Python (System Automation, Boto3, APIs), Golang (REST APIs), Bash.
+* **DevOps Tools & Languages:** Git/GitHub, MkDocs (Docs-as-Code), Hugo. English (B2 - Professional Working Proficiency).
 
 ---
 

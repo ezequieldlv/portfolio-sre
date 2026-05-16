@@ -12,82 +12,79 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 ---
 
 ## ✅ Phase 1: The Foundation & Infrastructure
-*Focus: Linux Hardening & Containerization.*
-- [x] **Hardware Setup:** Raspberry Pi 5 (4GB) with USB 3.0 Boot (SSD).
-- [x] **OS Hardening:** Debian Bookworm (Headless) + SSH Key Auth.
-- [x] **Containerization:** Docker Engine + Docker Compose (IaC) + Portainer.
-- [x] **Networking:** Tailscale Mesh VPN + Pi-hole (DNS AdBlocking).
-- [x] **Storage (NAS):** Samba configuration for cross-platform file sharing.
+*Focus: Linux Hardening, Containerization basics, and Hardware setup.*
+- [x] **Hardware & OS:** Raspberry Pi 5 (8GB) with NVMe Boot, OS Hardening (Headless Debian/Raspberry Pi OS Lite) with strict SSH Key Auth, and Static IP.
+- [x] **Containerization Core:** Docker Engine installation, Docker Compose (IaC basics), and Portainer.
+- [x] **Networking V1:** Tailscale (Mesh VPN for basic remote access) and Pi-hole (Network-wide Ad Blocking & DNS).
 
-## ✅ Phase 2: Automation & Scripting
-*Focus: Eliminating Toil with Code.*
-- [x] **Media Ops:** Automated *Arr Stack deployment with isolated networking.
-- [x] **Observability V1:** Centralized Dashboard implementation (Homepage).
-- [x] **The Auditor:** Custom Python script (using `psutil`) to monitor Kernel sensors.
-- [x] **The Alerting:** Telegram Bot API integration for critical alerts.
+## ✅ Phase 2: Automation & Scripting (Eliminating Toil)
+*Focus: Replacing manual maintenance with Python/Bash scripts and cron jobs.*
+- [x] **Media Ops Automation:** Full *Arr Stack deployment, qBittorrent with VPN isolation, and Hardlinks setup.
+- [x] **Scripting Dojo:** - *The Auditor:* Custom Python script using `psutil` to read Kernel sensors.
+  - *The Alerting:* Telegram Bot API integration for critical alerts.
 - [x] **Self-Healing:** Cron jobs for auto-updates (`apt`) and Docker cleanup.
 
-## ✅ Phase 3: Security Fortress (Zero Trust)
-*Focus: Hardening, Encryption & Access Control.*
-- [x] **Connectivity:** Cloudflare Tunnels (Bypass CGNAT securely / No open ports).
-- [x] **Active Defense:**
-    - [x] **Fail2Ban:** SSH brute-force protection logic.
-    - [x] **Cloudflare WAF:** Web Application Firewall rules (Geo-Blocking).
-- [x] **Secrets:** Migration to `.env` files + `.gitignore` policy enforcement.
-- [x] **Encryption:** Strict HTTPS/TLS enforcement for all services.
+## ✅ Phase 3: Security Fortress (Zero Trust Networking)
+*Focus: Bypassing ISP CGNAT, Secret Management, and SSL/TLS.*
+- [x] **Cloudflare Tunnels:** Deploy cloudflared container (Bypass CGNAT / No Open Ports) and Configure Inbound Rules (Zero Trust policy).
+- [x] **Secret Management:** Migrate hardcoded credentials to `.env` files with Git `.gitignore` policy enforcement.
+- [x] **Encryption:** Strict HTTPS/TLS enforcement (Cloudflare Edge Certificates) and Public Hostnames configuration.
 
-## ✅ Phase 4: The Builder
-*Focus: Transitioning from "Configuring" to "Building Software".*
-- [x] **Golang Basics:** Syntax, Goroutines, HTTP Standard Library.
-- [x] **Project A:** "Hello SRE" - API returning server telemetry in JSON.
-- [x] **Advanced Docker:** Multi-Stage Builds (Go -> Distroless/Alpine).
-- [x] **Web Server:** Nginx Reverse Proxy for this Portfolio (Self-Hosted).
+## ✅ Phase 4: The Builder (DevOps & Coding)
+*Focus: Transitioning from "Configuring Software" to "Building Software".*
+- [x] **Golang (Go) Basics:** Syntax, Goroutines, and HTTP Standard Library. Project "Hello SRE" (API returning server telemetry).
+- [x] **Advanced Docker Build:** Create custom Dockerfiles utilizing Multi-Stage Builds (Go -> Distroless/Alpine).
+- [x] **Web Server Implementation:** Deploy Personal Portfolio (Hugo) via Nginx Container, fetching data from Go API.
 
----
+## ✅ Phase 5: Deep Observability
+*Focus: "If you can't measure it, you can't improve it." Moving beyond simple scripts.*
+- [x] **The Stack:** Prometheus (Scraping metrics) and Grafana (Golden Signals Dashboard).
+- [x] **Log Management:** Docker Logs aggregation (Loki) and Nginx Access/Error logs analysis (Geo-IP mapping).
+- [x] **Health Checks:** Implement Docker Healthchecks and Uptime Kuma (External monitoring dashboard).
 
-## ✅ Phase 5: Deep Observability (Completed)
-*Focus: Moved from basic scripts to enterprise-grade telemetry and visualization.*
-- [x] **Stack:** Prometheus + Grafana (Golden Signals Dashboard).
-- [x] **Logs:** Centralized aggregation with Loki.
-- [x] **Health:** Uptime Kuma implementation & Public Status Page.
+## ✅ Phase 6: Defensive Hacking (Red Teaming)
+*Focus: Auditing the infrastructure from an attacker's perspective.*
+- [x] **Vulnerability Scanning:** Audit the Raspberry Pi with Nmap and check for exposed headers.
+- [x] **Hardening:** Fail2Ban (SSH brute-force protection) and Cloudflare WAF (Geo-Blocking and Bot Fight Mode).
+- [x] **Training (TryHackMe):** Pre-Security (Networking basics) and Jr. Penetration Tester (Web Hacking).
 
----
-
-## ✅ Phase 6: Defensive Hacking & Red Teaming (Completed)
-*Focus: Transitioning from builder to attacker. Auditing and hardening the Zero Trust infrastructure.*
-- [x] **Audit:** Vulnerability scanning on LAN (Nmap) & routing fixes.
-- [x] **Web to OS Escalation:** Bypassed CMS logins via LFI and PHP Wrappers.
-- [x] **Fileless Execution:** In-memory reverse shells bypassing disk writes.
-- [x] **Privilege Escalation:** SUID binary abuse & sudoers misconfigurations to achieve Root.
-- [x] **Corporate Defense:** Active Directory auditing (AS-REP Roasting & DCSync awareness).
-
----
-
-## ✅ Phase 7: CI/CD & GitOps (Completed)
+## ✅ Phase 7: CI/CD & GitOps
 *Focus: Automating the software delivery pipeline.*
-- [x] **CI (Continuous Integration):** ...
-- [x] **Registry:** ...
-- [x] **CD (Continuous Deployment):** ...
-- [x] **Chaos Engineering:** Resilience testing via automated service restarts (Python Agent).
+- [x] **GitHub Actions:** CI to automate Go build and Linting on `git push`. CD to trigger deployment upon successful build.
+- [x] **GitOps:** Watchtower to automatically update running containers when new images are pushed.
+- [x] **Chaos Engineering:** Custom scripts to randomly restart containers to test resilience.
+
+## ✅ Phase 8: AWS Cloud Foundation & IaC (MyssTic Warden)
+*Focus: Expanding beyond the Home Lab into a highly available, Zero-Trust Public Cloud environment.*
+- [x] **Infrastructure as Code (IaC):** Terraform provisioning (Free Tier EC2). Enterprise State via S3 Remote Backend (AES-256) + DynamoDB State Locking.
+- [x] **Zero-Trust Networking:** Custom VPC architecture (Public DMZ + Isolated Private Subnets) with strict Security Groups.
+- [x] **Persistence & Security:** Multi-AZ Amazon RDS (PostgreSQL) deployment, AWS DLM for automated backups, and AWS Secrets Manager integration.
+- [x] **Serverless Observability:** Amazon CloudWatch alarms triggering SNS Topics, invoking an AWS Lambda (Python) to push real-time alerts to a Telegram Bot.
 
 ---
 
-## 🚧 Phase 8: Hybrid Cloud & IaC (Current Focus)
-*Focus: Introducing to AWS environment.*
-- [X] **IaC:** Terraform provisioning (AWS EC2).
-- [] **Backup:** Encrypted backups to AWS S3 (Glacier).
-- [] **Config Mgmt:** Ansible playbooks for automated server setup.
+## 🚧 Phase 9: Configuration Management & Hybrid Cloud (Current Focus)
+*Focus: Idempotent server configuration, enterprise GitOps, and Edge-to-Cloud connectivity.*
+- [ ] **Ansible Automation:** Playbooks to setup the EC2 instance automatically (Docker, UFW) and standardize the Raspberry Pi (Edge) setup.
+- [ ] **Hybrid Network & DNS:** Integrate EC2 and Raspberry Pi into a single Mesh VPN (Tailscale), migrate to AWS Route 53 DNS, and deploy Reverse Proxy (Nginx Proxy Manager / Traefik) on AWS.
+- [ ] **Cloud Deployments & FinOps:** Migrate Portfolio to AWS for HA. Self-Host Vaultwarden in EC2, connected to the isolated RDS. Implement S3 Lifecycle Policies for backups via Duplicati.
+
+---
 
 ## 🔮 Future Phases (The Path Forward)
 
-### Phase 9: Orchestration (The Migration)
-- **K8s:** Migration to **K3s** (Lightweight Kubernetes).
-- **ArgoCD:** Declarative GitOps for Kubernetes.
-- **Cloud:** AWS Solutions Architect Associate preparation.
+### Phase 10: Orchestration (The Final Boss)
+*Focus: Industry standard container orchestration.*
+- [ ] **Kubernetes (K3s):** Migrate Docker Compose services to Lightweight Kubernetes.
+- [ ] **ArgoCD:** Implement declarative GitOps for Kubernetes.
+- [ ] **Cloud Scaling (Experiment):** Connect On-Premises K3s with AWS EKS (Hybrid Cluster).
 
-### Phase 10: Endgame (Pro League)
-- **Offensive Security:** Hack The Box (HTB) - Retired Machines.
-- **Architecture:** Hybrid Cluster design (On-Prem K3s + Cloud).
+### 🚀 Extras & Pro League (Horizon)
+*Focus: Mastery, Advanced Cloud & Offensive Security.*
+- [ ] **AWS Training:** AWS Solutions Architect Associate Course.
+- [ ] **Hack The Box (HTB):** Tackle "Retired Machines" without guides.
+- [ ] **Cloud Architecture:** Design Application Load Balancers (ALB) and Auto Scaling.
+- [ ] **Enterprise Automation:** Deploy n8n or Apache Airflow.
 
 ---
 *Roadmap updated automatically via CI/CD.*

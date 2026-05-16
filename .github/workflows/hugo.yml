@@ -39,13 +39,11 @@ jobs:
           extended: true
 
       - name: Build with Hugo
-        # CAMBIO 1: Le decimos a Hugo dónde está el código fuente (--source)
         run: hugo --minify --source frontend --baseURL "https://ezequieldlv.github.io/portfolio-sre/"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # CAMBIO 2: Hugo generará la carpeta 'public' DENTRO de 'frontend'
           path: ./frontend/public
 
   # Deployment job

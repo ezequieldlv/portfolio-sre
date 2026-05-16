@@ -30,14 +30,32 @@ Architected and provisioned a resilient, bare-metal microservices environment on
 
 ---
 
+## ☁️ MyssTic Warden: Enterprise AWS Architecture
+*Infrastructure as Code / Event-Driven / Zero Trust*
+
+Designed and provisioned a highly available, event-driven AWS architecture from scratch using Terraform, focusing on immutable infrastructure and automated incident response.
+
+* **IaC & Remote State:** Fully managed via Terraform with state locked in DynamoDB and encrypted in S3 (AES-256).
+* **Zero Trust Networking:** Custom VPC architecture isolating public DMZs from private database subnets, strictly controlled via Security Groups.
+* **Database Isolation:** Multi-AZ PostgreSQL deployment on Amazon RDS, integrated with AWS Secrets Manager for dynamic, zero-touch credential injection.
+* **Serverless Chaos Response:** Implemented an event-driven observability pipeline. CloudWatch monitors EC2 CPU anomalies, triggering an SNS topic that invokes a Python AWS Lambda function to push critical alerts directly to a Telegram Bot.
+* **Status:** `Production 🟢`
+
+> **Tech Stack:** `Terraform` `AWS (EC2, VPC, RDS, IAM)` `Serverless (Lambda, SNS)` `Python` `CloudWatch`
+
+> [🔗 View Infrastructure Repository](https://github.com/ezequieldlv/mysstic-cloud-iac)
+
+---
+
 ## 🗺️ The SRE Roadmap (Engineering Log)
 *Continuous Learning / Documentation*
 
-I am publicly documenting my transition to Site Reliability Engineering through a structured **9-Phase Roadmap**.
+I am publicly documenting my transition to Site Reliability Engineering through a structured **10-Phase Roadmap**.
 
 * **Phase 1-6 (Completed):** Infrastructure Hardening, Security Fortress, and Offensive Teaming.
 * **Phase 7 (Completed):** CI/CD & GitOps Automation.
-* **Phase 8 (Current):** Hybrid Cloud & Infrastructure as Code (AWS/Terraform).
+* **Phase 8 (Completed):** AWS Cloud Foundation & Event-Driven Architecture.
+* **Phase 9 (Current):** Configuration Management & Hybrid Cloud Migration.
 * **Future Phases:** Kubernetes Orchestration.
 
 > [👉 **View Full Roadmap & Progress**]({{< ref "roadmap.md" >}})
@@ -206,5 +224,7 @@ graph TD
 </script>
 
 > **Tech Stack:** `Golang` `Hugo` `Nginx` `Cloudflare` `Docker Networks`
+
+> [🔗 View Portfolio Source Code](https://github.com/ezequieldlv/portfolio-sre)
 
 ---
