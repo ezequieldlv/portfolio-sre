@@ -2,6 +2,8 @@
 
 A minimalist, high-performance portfolio built with a **Docs-as-Code** philosophy. This repository contains the application layer (Microservices) of my personal infrastructure, designed to showcase my skills in **Go**, **Static Site Generation**, and **Optimized Containerization**.
 
+The production environment has been migrated from a legacy edge setup to a hardened cloud-native architecture on AWS, managing routing natively without external intermediaries.
+
 ## 🛠 Tech Stack
 
 ### Frontend (Web Service)
@@ -24,12 +26,13 @@ A minimalist, high-performance portfolio built with a **Docs-as-Code** philosoph
 ```mermaid
 graph TD
     classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
-    classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
+    classDef aws fill:#FF9900,stroke:#fff,stroke-width:2px,color:#000,font-weight:bold
     classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
     classDef cicd fill:#1a1b26,stroke:#e0af68,stroke-width:2px,color:#c0caf5
 
-    User((🌐 Internet)):::user -->|HTTPS / WAF| CF{☁️ Cloudflare Edge}:::cf
-    CF -->|Tunnel| Frontend["🖥️ Web Server (Nginx + Hugo)"]:::app
+    User((🌐 Internet)):::user -->|HTTPS / TLS| R53{🌐 AWS Route 53}:::aws
+    R53 -->|Edge Routing| Traefik[🔀 Traefik Ingress Controller]:::aws
+    Traefik -->|Reverse Proxy| Frontend["🖥️ Web Server (Nginx + Hugo)"]:::app
     Frontend -.->|Internal API Fetch| Backend["⚙️ Telemetry API (Go)"]:::app
     
     GitHub((🐙 GitHub Actions)):::cicd -.->|CI/CD Pipeline| Frontend
@@ -56,6 +59,7 @@ graph TD
 - [x] Optimized Dockerfiles (Multi-Stage & Distroless)
 - [x] Local Orchestration (docker-compose.yml)
 - [x] CI/CD Pipeline Implementation (GitHub Actions)
+- [x] Production Migration to AWS Infrastructure (Route 53 & Traefik)
 
 ---
-*Developed by Ezequiel | Running on the `ez-lab` edge node.*
+*Developed by Ezequiel | Running on the MyssTic Warden cloud backbone.*
