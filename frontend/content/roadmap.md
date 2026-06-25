@@ -63,28 +63,50 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🚧 Phase 9: Configuration Management & Hybrid Cloud (Current Focus)
-*Focus: Idempotent server configuration, enterprise GitOps, and Edge-to-Cloud connectivity.*
-- [ ] **Ansible Automation:** Playbooks to setup the EC2 instance automatically (Docker, UFW) and standardize the Raspberry Pi (Edge) setup.
-- [ ] **Hybrid Network & DNS:** Integrate EC2 and Raspberry Pi into a single Mesh VPN (Tailscale), migrate to AWS Route 53 DNS, and deploy Reverse Proxy (Nginx Proxy Manager / Traefik) on AWS.
-- [ ] **Cloud Deployments & FinOps:** Migrate Portfolio to AWS for HA. Self-Host Vaultwarden in EC2, connected to the isolated RDS. Implement S3 Lifecycle Policies for backups via Duplicati.
+## 🚧 Phase 9: Cloud Mastery & DevSecOps (Current Focus)
+*Focus: Shift-Left Security, Zero-Trust IAM, and Configuration Management.*
+- [ ] **Zero-Trust IAM:** Replace GitHub static secrets with AWS OIDC (OpenID Connect).
+- [ ] **Shift-Left Security:** Implement Trufflehog (Secret Scanning) and Checkov (IaC compliance) before deployment.
+- [ ] **Ansible Automation:** Idempotent playbooks to standardize AWS EC2 setup securely.
+- [ ] **Self-Hosting (Vaultwarden):** Deploy Vaultwarden password manager using the new secure pipeline, connecting to the isolated RDS.
 
----
+## 🚧 Phase 9.5: Enterprise GitOps & Continuous Deployment
+*Focus: Full deployment automation across multiple environments with Zero Human Intervention.*
+- [ ] **CI Engine:** GitHub Actions compiles Go/Python, runs linters, and builds immutable Docker images.
+- [ ] **Staging (Edge/Raspberry Pi):** Pipeline pushes `:stage` tag to GHCR. Watchtower (Pull agent) automatically updates the local Pi without exposing ports.
+- [ ] **Production (Cloud/AWS):** Pipeline pushes `:latest` or version tags to AWS ECR. Secure Push-CD via Tailscale VPN updates the EC2 Compose stack.
 
-## 🔮 Future Phases (The Path Forward)
+## 🔒 Phase 10: Advanced Cloud Security & Edge SOC
+*Focus: FinOps, Least Privilege, and transforming the Home Lab into a Security Operations Center.*
+- [ ] **Deep Cloud AWS:**
+  - Implement IAM Access Analyzer (Regional level).
+  - Apply strict S3 Bucket Policies (force `aws:SecureTransport`).
+  - FinOps: S3 Lifecycle Policies (Transition Traefik logs to Glacier Deep Archive).
+  - "Deploy & Destroy" Proof of Works: Terraform WAF (simulate SQLi) and ALB Auto Scaling.
+- [ ] **Hybrid SOC (Raspberry Pi):**
+  - Uptime Kuma for Status Pages & 60s pings (Telegram alerts).
+  - Monitor AWS from Edge: Grafana & Prometheus scraping AWS metrics via Tailscale.
+  - Pi-Hole as Internal Route 53 (e.g., `grafana.lan`).
+  - Red Team/SOC L1 Training: TryHackMe Cyber Defense and PortSwigger Web Security.
 
-### Phase 10: Orchestration (The Final Boss)
-*Focus: Industry standard container orchestration.*
-- [ ] **Kubernetes (K3s):** Migrate Docker Compose services to Lightweight Kubernetes.
-- [ ] **ArgoCD:** Implement declarative GitOps for Kubernetes.
-- [ ] **Cloud Scaling (Experiment):** Connect On-Premises K3s with AWS EKS (Hybrid Cluster).
+## 🐧 Phase 10.5: The Metal (Arch Linux From Scratch)
+*Focus: Terminal Mastery and Low-Level OS tuning.*
+- [ ] **Project:** Install Arch Linux from scratch on personal notebook.
+- [ ] **Customization:** Master dotfiles, Hyprland (Wayland compositor).
+- [ ] **Tryhard IDE:** Setup Neovim as the primary development environment.
 
-### 🚀 Extras & Pro League (Horizon)
-*Focus: Mastery, Advanced Cloud & Offensive Security.*
-- [ ] **AWS Training:** AWS Solutions Architect Associate Course.
-- [ ] **Hack The Box (HTB):** Tackle "Retired Machines" without guides.
-- [ ] **Cloud Architecture:** Design Application Load Balancers (ALB) and Auto Scaling.
-- [ ] **Enterprise Automation:** Deploy n8n or Apache Airflow.
+## ☸️ Phase 11: The Final Boss (Kubernetes)
+*Focus: Industry-standard container orchestration.*
+- [ ] **K3s on Edge:** Migrate the Raspberry Pi from Docker Compose to a lightweight K3s cluster.
+- [ ] **Kubernetes Abstractions:** Master Pods, Deployments, Services, and Ingress controllers.
+- [ ] **Security:** Implement Network Policies (Pod isolation) and RBAC.
+- [ ] **GitOps Realization:** Deploy ArgoCD for declarative, pull-based cluster synchronization.
+
+## 🚀 Extras & Pro League (Horizon)
+*Focus: Data Engineering, Cloud Architecture, and Career Growth.*
+- [ ] Learn Data Engineering, APM (Elastic/ELK stack), and Automation (n8n/Airflow).
+- [ ] Hack The Box (HTB) - Retired Machines (No guides).
+- [ ] AWS Solutions Architect Associate preparation.
 
 ---
 *Roadmap updated automatically via CI/CD.*
