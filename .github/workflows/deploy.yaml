@@ -39,6 +39,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 🐫 Setup QEMU (Emulador ARM)
+        uses: docker/setup-qemu-action@v3
+
       - name: 🛠️ Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -70,6 +73,7 @@ jobs:
           push: false
           load: true
           tags: portfolio-backend:local
+          platforms: linux/arm64
 
       - name: 🛡️ Trivy Scan (Backend)
         uses: aquasecurity/trivy-action@master
@@ -93,6 +97,7 @@ jobs:
           push: false
           load: true
           tags: portfolio-frontend:local
+          platforms: linux/arm64
 
       - name: 🛡️ Trivy Scan (Frontend)
         uses: aquasecurity/trivy-action@master
