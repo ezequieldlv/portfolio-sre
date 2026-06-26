@@ -1,7 +1,7 @@
 # ==========================================
 # Etapa 1: Builder (Compilación)
 # ==========================================
-FROM gohugoio/hugo:extended-0.148.0 AS builder
+FROM ghcr.io/gohugoio/hugo:v0.148.0 AS builder
 
 WORKDIR /src
 
