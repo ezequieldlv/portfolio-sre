@@ -1,8 +1,7 @@
 # ==========================================
 # Etapa 1: Builder (Compilación)
 # ==========================================
-# hadolint ignore=DL3006
-FROM klakegg/hugo:ext-alpine AS builder
+FROM gohugoio/hugo:extended-0.148.0 AS builder
 
 WORKDIR /src
 
