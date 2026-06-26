@@ -12,7 +12,7 @@ RUN hugo --minify --environment production
 # ==========================================
 # Etapa 2: Servidor Web (Producción)
 # ==========================================
-FROM nginx:1.25-alpine-slim
+FROM nginx:1.27-alpine-slim
 
 LABEL maintainer="MyssTic Warden Cloud Ops"
 LABEL environment="production"
