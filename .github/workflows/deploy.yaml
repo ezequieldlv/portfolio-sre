@@ -78,16 +78,17 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       # --- VARIABLES DE ENTORNO DINÁMICAS ---
-      - name: 🏷️ Set Tags
-        id: tags
+      - name: 🚀 Push Backend
         run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            echo "BACKEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod" >> $GITHUB_ENV
-            echo "FRONTEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod" >> $GITHUB_ENV
-          else
-            echo "BACKEND_TAG=ghcr.io/${{ github.actor }}/ez-backend:stage" >> $GITHUB_ENV
-            echo "FRONTEND_TAG=ghcr.io/${{ github.actor }}/ez-frontend:stage" >> $GITHUB_ENV
-          fi
+          TAG="${{ github.ref == 'refs/heads/main' && format('{0}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod', secrets.AWS_ACCOUNT_ID) || format('ghcr.io/{0}/ez-backend:stage', github.actor) }}"
+          docker tag portfolio-backend:local "$TAG"
+          docker push "$TAG"
+
+      - name: 🚀 Push Frontend
+        run: |
+          TAG="${{ github.ref == 'refs/heads/main' && format('{0}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod', secrets.AWS_ACCOUNT_ID) || format('ghcr.io/{0}/ez-frontend:stage', github.actor) }}"
+          docker tag portfolio-frontend:local "$TAG"
+          docker push "$TAG"
 
       # --- SCAN DE VULNERABILIDADES (Filesystem en lugar de Imagen) ---
       - name: 🛡️ Trivy Scan (Source Code)
