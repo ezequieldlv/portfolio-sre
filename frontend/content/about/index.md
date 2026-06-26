@@ -71,16 +71,16 @@ Córdoba, Argentina | ezequiel2014.edlv@gmail.com | [Linkedin] | [GitHub] | [Por
 ---
 
 ## PROFESSIONAL SUMMARY
-Systems Engineering student and Site Reliability Engineer actively engineering scalable, hybrid cloud infrastructures[cite: 6]. Transitioned from resolving critical Layer 2/3 network incidents under strict SLAs to architecting automated, immutable environments[cite: 6]. Expertly bridges technical execution with structured communication and persuasion frameworks (OPI), translating complex operational metrics into clear business insights for cross-functional teams. Passionate about eliminating toil, specializing in Infrastructure as Code (Terraform), DevSecOps, and Zero Trust architectures[cite: 6]. Seeking a Cloud Infrastructure role to leverage a strong operational mindset, optimize cloud costs (FinOps), and drive system resilience[cite: 6].
+Systems Engineering student and Site Reliability Engineer actively engineering scalable, hybrid cloud infrastructures. Transitioned from resolving critical Layer 2/3 network incidents under strict SLAs to architecting automated, immutable environments. Expertly bridges technical execution with structured communication and persuasion frameworks (OPI), translating complex operational metrics into clear business insights for cross-functional teams. Passionate about eliminating toil, specializing in Infrastructure as Code (Terraform), DevSecOps, and Zero Trust architectures. Seeking a Cloud Infrastructure role to leverage a strong operational mindset, optimize cloud costs (FinOps), and drive system resilience.
 
 ---
 
 ## TECHNICAL SKILLS
-*   **Cloud & IaC:** AWS (EC2, S3, RDS, IAM, Lambda, SNS, KMS, DynamoDB, Route 53), Terraform, Ansible[cite: 6].
-*   **DevOps & CI/CD:** GitHub Actions, GitOps, Docker Compose, Watchtower[cite: 6].
-*   **Security & DevSecOps:** Zero Trust Architecture, Cloudflare Tunnels, Tailscale, IAM Least Privilege, KMS Encryption, UFW, Fail2Ban[cite: 6].
-*   **Observability & Chaos:** Prometheus, Grafana, Loki, Custom Python Telemetry, Chaos Agents[cite: 6].
-*   **OS & Programming:** Linux (Debian/Ubuntu), Bash (Cloud-Init), Python, Golang (REST APIs), SQL[cite: 6].
+*   **Cloud & IaC:** AWS (EC2, S3, RDS, IAM, Lambda, SNS, KMS, DynamoDB, Route 53), Terraform, Ansible.
+*   **DevOps & CI/CD:** GitHub Actions, GitOps, Docker Compose, Watchtower.
+*   **Security & DevSecOps:** Zero Trust Architecture, Cloudflare Tunnels, Tailscale, IAM Least Privilege, KMS Encryption, UFW, Fail2Ban.
+*   **Observability & Chaos:** Prometheus, Grafana, Loki, Custom Python Telemetry, Chaos Agents.
+*   **OS & Programming:** Linux (Debian/Ubuntu), Bash (Cloud-Init), Python, Golang (REST APIs), SQL.
 *   **Languages & Communication:** English (B2 - Professional Working Proficiency), Spanish (Native), Structured Public Speaking, Persuasion, and Conflict Resolution (OPI Framework).
 
 ---
@@ -88,27 +88,27 @@ Systems Engineering student and Site Reliability Engineer actively engineering s
 ## TECHNICAL PROJECTS
 
 ### MyssTic Warden: Hybrid Cloud-Native Infrastructure (Edge + AWS) | Jan 2026 - Present
-*   **Architecture, IaC & GitOps:** Engineered a hybrid edge-to-cloud environment bridging a bare-metal cluster with AWS VPCs, managed entirely via Terraform and Ansible[cite: 6]. Implemented strict GitOps CI/CD workflows using GitHub Actions and Watchtower, securing remote state in S3 (AES-256) with DynamoDB locking[cite: 6].
-*   **DevSecOps, Networking & FinOps:** Enforced Zero Trust networking (Cloudflare Tunnels, Tailscale VPN) to bypass CGNAT and eliminate exposed ports[cite: 6]. Provisioned self-healing EC2 Spot Instances to reduce costs by ~70%, eradicating static credentials via AWS IAM Roles, KMS, and Secrets Manager[cite: 6].
-*   **Database & Disaster Recovery:** Deployed a Multi-AZ RDS PostgreSQL database isolated in private subnets[cite: 6]. Configured Amazon DLM for automated EBS snapshots to guarantee strict RPOs, alongside lifecycle-managed hybrid backups to AWS S3 and Glacier[cite: 6].
-*   **Event-Driven Observability & Chaos:** Built a comprehensive observability stack (Prometheus, Grafana, Loki) and Serverless alerting pipelines (CloudWatch, SNS, Lambda)[cite: 6]. Developed Python chaos agents to intentionally trigger OOM events, proactively validating cluster resilience and auto-recovery[cite: 6].
-*   **AI-Augmented Operations:** Leveraged generative AI models (Claude, Gemini) and Prompt Engineering to automate complex log analysis, refactor Python/Bash scripts, and accelerate incident troubleshooting[cite: 6].
+*   **Architecture, IaC & GitOps:** Engineered a hybrid edge-to-cloud environment bridging a bare-metal cluster with AWS VPCs, managed entirely via Terraform and Ansible. Implemented strict GitOps CI/CD workflows using GitHub Actions and Watchtower, securing remote state in S3 (AES-256) with DynamoDB locking.
+*   **DevSecOps, Networking & FinOps:** Enforced Zero Trust networking (Cloudflare Tunnels, Tailscale VPN) to bypass CGNAT and eliminate exposed ports. Provisioned self-healing EC2 Spot Instances to reduce costs by ~70%, eradicating static credentials via AWS IAM Roles, KMS, and Secrets Manager.
+*   **Database & Disaster Recovery:** Deployed a Multi-AZ RDS PostgreSQL database isolated in private subnets. Configured Amazon DLM for automated EBS snapshots to guarantee strict RPOs, alongside lifecycle-managed hybrid backups to AWS S3 and Glacier.
+*   **Event-Driven Observability & Chaos:** Built a comprehensive observability stack (Prometheus, Grafana, Loki) and Serverless alerting pipelines (CloudWatch, SNS, Lambda). Developed Python chaos agents to intentionally trigger OOM events, proactively validating cluster resilience and auto-recovery.
+*   **AI-Augmented Operations:** Leveraged generative AI models (Claude, Gemini) and Prompt Engineering to automate complex log analysis, refactor Python/Bash scripts, and accelerate incident troubleshooting.
 
 ---
 
 ## PROFESSIONAL EXPERIENCE
 
 ### Konecta (Telecom Argentina - Personal Flow) | Technical Support Analyst (Tier 2) | Sep 2024 - Apr 2026
-*   **Incident Management:** Executed Root Cause Analysis (RCA) for residential Layer 2/3 network outages, utilizing telemetry to reduce MTTR and escalating critical faults directly to Tier 3[cite: 6].
-*   **Troubleshooting & Documentation:** Maintained 99.9% SLA compliance by rapidly diagnosing TCP/IP and DNS failures, and optimized internal knowledge bases via MkDocs[cite: 6].
+*   **Incident Management:** Executed Root Cause Analysis (RCA) for residential Layer 2/3 network outages, utilizing telemetry to reduce MTTR and escalating critical faults directly to Tier 3.
+*   **Troubleshooting & Documentation:** Maintained 99.9% SLA compliance by rapidly diagnosing TCP/IP and DNS failures, and optimized internal knowledge bases via MkDocs.
 
 ### Apex America | Customer Support Specialist | Dec 2023 - Apr 2024
-*   **Customer Operations:** Resolved 50+ daily high-volume account and billing inquiries, maintaining a 95%+ CSAT score and ensuring strict CRM data integrity during peak call traffic[cite: 6].
+*   **Customer Operations:** Resolved 50+ daily high-volume account and billing inquiries, maintaining a 95%+ CSAT score and ensuring strict CRM data integrity during peak call traffic.
 
 ---
 
 ## EDUCATION & CERTIFICATIONS
-*   **Universidad Tecnológica Nacional (UTN)** | Information Systems Engineering (3rd Year Completed)[cite: 6].
+*   **Universidad Tecnológica Nacional (UTN)** | Information Systems Engineering (3rd Year Completed).
 *   **Advanced Oratory, Persuasion & Influence (OPI 2.0)** | Intensive corporate communication and conflict resolution training.
-*   **AWS Launchpad for Students** | UTN FRC (2026)[cite: 6].
-*   **Full Stack Java Developer** | Argentina Programa 4.0 (2022)[cite: 6].
+*   **AWS Launchpad for Students** | UTN FRC (2026).
+*   **Full Stack Java Developer** | Argentina Programa 4.0 (2022).

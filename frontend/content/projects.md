@@ -90,13 +90,16 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
 ---
 
 ## 🌐 SRE Portfolio & Live Telemetry
-*Edge Computing / Microservices / CI/CD*
+*Cloud-Edge Computing / Microservices / CI/CD*
 
-More than just a website, this portfolio is a live microservices demo. The frontend (static) is currently fetching real-time telemetry from a **Golang API** running on a separate Docker container within my Raspberry Pi cluster, exposed via Zero Trust.
+A minimalist, high-performance portfolio built with a Docs-as-Code philosophy. This repository contains the application layer (Microservices) of my personal infrastructure, designed to showcase my skills in Go, Static Site Generation, and Optimized Containerization.
+
+The production environment has been migrated from a legacy edge setup to a hardened cloud-native architecture on AWS, incorporating DevSecOps pipelines and GitOps deployment strategies.
 
 * **Frontend:** Hugo + Nginx (Static Edge)
 * **Backend:** Golang 1.22 REST API (Distroless Container)
-* **Security:** Cloudflare Tunnels (Zero Trust) + Strict CORS Policies.
+* **Security:** DevSecOps Pipeline (Trivy, Hadolint, Secret Scanning) + Strict CORS Policies.
+* **CI/CD Pipelines:** GitHub Actions (Multi-environment logic: Staging -> GHCR, Production -> AWS ECR)
 
 ### 🏗️ Live Architecture
 
@@ -111,34 +114,43 @@ More than just a website, this portfolio is a live microservices demo. The front
 
 <pre class="mermaid">
 graph TD
-    %% Definición de colores (Estilo Tokyo Night + Cloudflare)
-    classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
-    classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
-    classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
-    classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
-    classDef obs fill:#16161e,stroke:#e0af68,stroke-width:2px,color:#c0caf5
+    classDef dev fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef cicd fill:#24283b,stroke:#bb9af7,stroke-width:2px,color:#c0caf5
+    classDef edge fill:#152515,stroke:#44aa44,stroke-width:2px,color:#fff
+    classDef cloud fill:#221535,stroke:#ff9900,stroke-width:2px,color:#fff
+    classDef net fill:#1f2335,stroke:#7aa2f7,stroke-width:1px,color:#a9b1d6
 
-    User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
-    Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
+    %% FLUJO DE CÓDIGO
+    Developer(("💻 Ezequiel")):::dev -->|git push| GitHub{"🐙 GitHub Actions Engine"}:::cicd
 
-    GitHub((🐙 GitHub Actions)):::cicd -.->|Push Image| GHCR[(GHCR Registry)]:::cicd
+    subgraph gates ["CI/CD DevSecOps Gates"]
+        GitHub -->|1. Audit| Trufflehog["🕵️‍♂️ Trufflehog Secrets"]:::cicd
+        GitHub -->|2. Lint| Hadolint["🐳 Hadolint Docker"]:::cicd
+        GitHub -->|3. Scan| Trivy["🛡️ Trivy Vulnerabilities"]:::cicd
+    end
 
-    subgraph "Ez-Lab (Raspberry Pi 5 / Docker Compose)"
-        direction TB
+    %% ENRUTAMIENTO POR RAMAS (LOGICA DEL PIPELINE)
+    Trivy -->|Branch: develop| GHCR[("📦 GitHub Registry")]:::cicd
+    Trivy -->|Branch: main| ECR[("🐳 AWS ECR Private")]:::cloud
 
-        subgraph "Web Traffic & Apps"
-            Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
-            Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
-            Frontend -.->|Internal Fetch| Backend
-        end
+    %% ENTORNO STAGING (RASPBERRY PI)
+    subgraph staging ["Ez-Lab Environment (Staging Edge)"]
+        GHCR -.->|Auto Pull| WatchtowerPi["🔄 Watchtower Agent"]:::edge
+        WatchtowerPi -->|Deploy :stage| WebStage["🖥️ Frontend (Hugo)"]:::edge
+        WatchtowerPi -->|Deploy :stage| APIStage["⚙️ Telemetry (Go)"]:::edge
+        WebStage -.->|CORS Fetch| APIStage
+    end
 
-        subgraph "Observability & GitOps"
-            Watchtower["🔄 Watchtower"]:::cicd -.->|Pull & Deploy| GHCR
-            Watchtower -->|Update Containers| Frontend
-            Prometheus["📊 Prometheus"]:::obs -.->|Scrape Metrics| Backend
-            Grafana["📈 Grafana"]:::obs -.->|Visualize| Prometheus
-        end
+    %% ENTORNO PRODUCCIÓN (AWS)
+    subgraph prod ["MyssTic Warden Environment (Production Cloud)"]
+        ECR -.->|IAM Auth Pull| WatchtowerAWS["🔄 Watchtower Agent"]:::cloud
+        WatchtowerAWS -->|Deploy :prod| WebProd["🖥️ Frontend (Nginx)"]:::cloud
+        WatchtowerAWS -->|Deploy :prod| APIProd["⚙️ Telemetry (Go)"]:::cloud
+
+        Route53(("🌐 Route 53")):::cloud --> Traefik["🔀 Traefik Ingress"]:::cloud
+        Traefik -->|Path: /| WebProd
+        Traefik -->|Path: /api/health| APIProd
+        WebProd -.->|Internal VPC Fetch| APIProd
     end
 </pre>
 
@@ -223,7 +235,7 @@ graph TD
     document.addEventListener("DOMContentLoaded", fetchTelemetry);
 </script>
 
-> **Tech Stack:** `Golang` `Hugo` `Nginx` `Cloudflare` `Docker Networks`
+> **Tech Stack:** `Golang` `Hugo` `Nginx` `AWS` `ECR` `GHCR` `GitOps`
 
 > [🔗 View Portfolio Source Code](https://github.com/ezequieldlv/portfolio-sre)
 
