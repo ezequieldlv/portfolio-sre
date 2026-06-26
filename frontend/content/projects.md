@@ -33,9 +33,11 @@ Architected and provisioned a resilient, bare-metal microservices environment on
 ## ☁️ MyssTic Warden: Enterprise AWS Architecture
 *Infrastructure as Code / Event-Driven / Zero Trust*
 
-Designed and provisioned a highly available, event-driven AWS architecture from scratch using Terraform, focusing on immutable infrastructure and automated incident response.
+Designed and provisioned a highly available, event-driven AWS architecture from scratch using Terraform, focusing on immutable infrastructure, configuration management, and automated incident response.
 
 * **IaC & Remote State:** Fully managed via Terraform with state locked in DynamoDB and encrypted in S3 (AES-256).
+* **Shift-Left Security & IAM:** Enforced security compliance via Checkov and Trufflehog directly in the pipeline. Replaced all static deployment credentials with secure AWS OIDC (OpenID Connect) federation.
+* **Configuration Management:** Standardized base setups and system packages securely across AWS instances utilizing automated Ansible playbooks.
 * **Zero Trust Networking:** Custom VPC architecture isolating public DMZs from private database subnets, strictly controlled via Security Groups.
 * **Database Isolation:** Multi-AZ PostgreSQL deployment on Amazon RDS, integrated with AWS Secrets Manager for dynamic, zero-touch credential injection.
 * **Serverless Chaos Response:** Implemented an event-driven observability pipeline. CloudWatch monitors EC2 CPU anomalies, triggering an SNS topic that invokes a Python AWS Lambda function to push critical alerts directly to a Telegram Bot.
@@ -50,13 +52,11 @@ Designed and provisioned a highly available, event-driven AWS architecture from 
 ## 🗺️ The SRE Roadmap (Engineering Log)
 *Continuous Learning / Documentation*
 
-I am publicly documenting my transition to Site Reliability Engineering through a structured **10-Phase Roadmap**.
+I am publicly documenting my transition to Site Reliability Engineering through a structured **11-Phase Roadmap**.
 
-* **Phase 1-6 (Completed):** Infrastructure Hardening, Security Fortress, and Offensive Teaming.
-* **Phase 7 (Completed):** CI/CD & GitOps Automation.
-* **Phase 8 (Completed):** AWS Cloud Foundation & Event-Driven Architecture.
-* **Phase 9 (Current):** Configuration Management & Hybrid Cloud Migration.
-* **Future Phases:** Kubernetes Orchestration.
+* **Phase 1-9.5 (Completed):** Infrastructure Hardening, Zero-Trust Architecture, Shift-Left Security workflows, Ansible Automation, and Multi-Arch CI/CD pipelines.
+* **Phase 10 (Current Focus):** Advanced Cloud Security, Hardening, FinOps optimization, and Hybrid Edge SOC development.
+* **Phase 11 (The Final Boss):** Kubernetes Orchestration & GitOps with ArgoCD.
 
 > [👉 **View Full Roadmap & Progress**]({{< ref "roadmap.md" >}})
 
@@ -73,7 +73,7 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
 
 <br>
 <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
-  
+
   <div style="flex: 1; min-width: 300px; text-align: center;">
     <p style="font-weight: bold; color: #d9534f; margin-bottom: 5px;">❌ Before: Legacy Static Site</p>
     <img src="../images/legacy_google_site.png" alt="Legacy Documentation" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #ddd;">
@@ -90,13 +90,16 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
 ---
 
 ## 🌐 SRE Portfolio & Live Telemetry
-*Edge Computing / Microservices / CI/CD*
+*Cloud-Edge Computing / Microservices / CI/CD*
 
-More than just a website, this portfolio is a live microservices demo. The frontend (static) is currently fetching real-time telemetry from a **Golang API** running on a separate Docker container within my Raspberry Pi cluster, exposed via Zero Trust.
+A minimalist, high-performance portfolio built with a Docs-as-Code philosophy. This repository contains the application layer (Microservices) of my personal infrastructure, designed to showcase my skills in Go, Static Site Generation, and Optimized Containerization.
+
+The production environment has been migrated from a legacy edge setup to a hardened cloud-native architecture on AWS, incorporating DevSecOps pipelines and GitOps deployment strategies.
 
 * **Frontend:** Hugo + Nginx (Static Edge)
 * **Backend:** Golang 1.22 REST API (Distroless Container)
-* **Security:** Cloudflare Tunnels (Zero Trust) + Strict CORS Policies.
+* **Security:** DevSecOps Pipeline (Trivy, Hadolint, Secret Scanning) + Strict CORS Policies.
+* **CI/CD Pipelines:** GitHub Actions (Multi-environment logic: Staging -> GHCR, Production -> AWS ECR)
 
 ### 🏗️ Live Architecture
 
@@ -111,34 +114,43 @@ More than just a website, this portfolio is a live microservices demo. The front
 
 <pre class="mermaid">
 graph TD
-    %% Definición de colores (Estilo Tokyo Night + Cloudflare)
-    classDef user fill:#16161e,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
-    classDef cf fill:#f6821f,stroke:#fff,stroke-width:2px,color:#fff,font-weight:bold
-    classDef daemon fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
-    classDef app fill:#292e42,stroke:#9ece6a,stroke-width:2px,color:#c0caf5
-    classDef obs fill:#16161e,stroke:#e0af68,stroke-width:2px,color:#c0caf5
+    classDef dev fill:#1a1b26,stroke:#7aa2f7,stroke-width:2px,color:#c0caf5
     classDef cicd fill:#24283b,stroke:#bb9af7,stroke-width:2px,color:#c0caf5
+    classDef edge fill:#152515,stroke:#44aa44,stroke-width:2px,color:#fff
+    classDef cloud fill:#221535,stroke:#ff9900,stroke-width:2px,color:#fff
+    classDef net fill:#1f2335,stroke:#7aa2f7,stroke-width:1px,color:#a9b1d6
 
-    User((🌐 Internet)):::user -->|HTTPS / SSL| Cloudflare{☁️ Cloudflare Edge}:::cf
-    Cloudflare -->|Zero Trust Tunnel| Cloudflared[🛡️ Cloudflared Daemon]:::daemon
-    
-    GitHub((🐙 GitHub Actions)):::cicd -.->|Push Image| GHCR[(GHCR Registry)]:::cicd
-    
-    subgraph "Ez-Lab (Raspberry Pi 5 / Docker Compose)"
-        direction TB
-        
-        subgraph "Web Traffic & Apps"
-            Cloudflared -->|web-net| Frontend["🖥️ Portfolio (Hugo)"]:::app
-            Cloudflared -->|web-net| Backend["⚙️ API Telemetry (Go)"]:::app
-            Frontend -.->|Internal Fetch| Backend
-        end
-        
-        subgraph "Observability & GitOps"
-            Watchtower["🔄 Watchtower"]:::cicd -.->|Pull & Deploy| GHCR
-            Watchtower -->|Update Containers| Frontend
-            Prometheus["📊 Prometheus"]:::obs -.->|Scrape Metrics| Backend
-            Grafana["📈 Grafana"]:::obs -.->|Visualize| Prometheus
-        end
+    %% FLUJO DE CÓDIGO
+    Developer(("💻 Ezequiel")):::dev -->|git push| GitHub{"🐙 GitHub Actions Engine"}:::cicd
+
+    subgraph gates ["CI/CD DevSecOps Gates"]
+        GitHub -->|1. Audit| Trufflehog["🕵️‍♂️ Trufflehog Secrets"]:::cicd
+        GitHub -->|2. Lint| Hadolint["🐳 Hadolint Docker"]:::cicd
+        GitHub -->|3. Scan| Trivy["🛡️ Trivy Vulnerabilities"]:::cicd
+    end
+
+    %% ENRUTAMIENTO POR RAMAS (LOGICA DEL PIPELINE)
+    Trivy -->|Branch: develop| GHCR[("📦 GitHub Registry")]:::cicd
+    Trivy -->|Branch: main| ECR[("🐳 AWS ECR Private")]:::cloud
+
+    %% ENTORNO STAGING (RASPBERRY PI)
+    subgraph staging ["Ez-Lab Environment (Staging Edge)"]
+        GHCR -.->|Auto Pull| WatchtowerPi["🔄 Watchtower Agent"]:::edge
+        WatchtowerPi -->|Deploy :stage| WebStage["🖥️ Frontend (Hugo)"]:::edge
+        WatchtowerPi -->|Deploy :stage| APIStage["⚙️ Telemetry (Go)"]:::edge
+        WebStage -.->|CORS Fetch| APIStage
+    end
+
+    %% ENTORNO PRODUCCIÓN (AWS)
+    subgraph prod ["MyssTic Warden Environment (Production Cloud)"]
+        ECR -.->|IAM Auth Pull| WatchtowerAWS["🔄 Watchtower Agent"]:::cloud
+        WatchtowerAWS -->|Deploy :prod| WebProd["🖥️ Frontend (Nginx)"]:::cloud
+        WatchtowerAWS -->|Deploy :prod| APIProd["⚙️ Telemetry (Go)"]:::cloud
+
+        Route53(("🌐 Route 53")):::cloud --> Traefik["🔀 Traefik Ingress"]:::cloud
+        Traefik -->|Path: /| WebProd
+        Traefik -->|Path: /api/health| APIProd
+        WebProd -.->|Internal VPC Fetch| APIProd
     end
 </pre>
 
@@ -201,11 +213,11 @@ graph TD
             const response = await fetch('https://api.ez-lab.site/api/health');
             if (!response.ok) throw new Error('Network error');
             const data = await response.json();
-            
+
             // Actualizar el header a verde brillante
             document.getElementById('api-status').innerHTML = '<div class="status-dot" style="background-color: #9ece6a; box-shadow: 0 0 10px #9ece6a;"></div> Live';
             document.getElementById('api-status').style.color = '#9ece6a';
-            
+
             // Inyectar datos con formato
             const container = document.getElementById('telemetry-data');
             container.innerHTML = `
@@ -223,7 +235,7 @@ graph TD
     document.addEventListener("DOMContentLoaded", fetchTelemetry);
 </script>
 
-> **Tech Stack:** `Golang` `Hugo` `Nginx` `Cloudflare` `Docker Networks`
+> **Tech Stack:** `Golang` `Hugo` `Nginx` `AWS` `ECR` `GHCR` `GitOps`
 
 > [🔗 View Portfolio Source Code](https://github.com/ezequieldlv/portfolio-sre)
 

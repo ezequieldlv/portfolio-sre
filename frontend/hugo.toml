@@ -16,7 +16,7 @@ buildExpired = false
   ShowShareButtons = false
   ShowPostNavLinks = true
   ShowBreadCrumbs = false
-  
+
   # --- PROFILE ---
   [params.profileMode]
     enabled = true
@@ -54,7 +54,7 @@ buildExpired = false
 [[menu.main]]
 name = "Roadmap"
 url = "/roadmap/"
-weight = 30  
+weight = 30
 
 [markup]
   [markup.goldmark]
