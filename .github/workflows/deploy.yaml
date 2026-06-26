@@ -11,6 +11,18 @@ permissions:
 
 jobs:
   # =======================================================
+  # FASE 0: AUDITORÍA DE PIPELINE (Meta-Seguridad)
+  # =======================================================
+  workflow-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 🕵️‍♂️ Validar sintaxis de GitHub Actions
+        uses: docker://rhysd/actionlint:latest
+        with:
+          args: -color
+
+  # =======================================================
   # FASE 1: AUDITORÍA ESTÁTICA (Código y Secretos)
   # =======================================================
   security-audit:
@@ -31,7 +43,7 @@ jobs:
           docker run --rm -i hadolint/hadolint < ./backend/Dockerfile
 
   # =======================================================
-  # FASE 2: BUILD, SCAN & PUSH
+  # FASE 2: BUILD & PUSH (Nativo ARM64)
   # =======================================================
   build-and-push:
     needs: security-audit
@@ -45,7 +57,7 @@ jobs:
       - name: 🛠️ Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      # --- 1. LOGINS ---
+      # --- LOGINS ---
       - name: 🔐 Login to GHCR (Staging)
         if: github.ref == 'refs/heads/develop'
         uses: docker/login-action@v3
@@ -65,50 +77,41 @@ jobs:
         if: github.ref == 'refs/heads/main'
         uses: aws-actions/amazon-ecr-login@v2
 
-      # --- 2. BACKEND (Go) ---
-      - name: 🏗️ Build Backend (Local)
+      # --- VARIABLES DE ENTORNO DINÁMICAS ---
+      - name: 🏷️ Set Tags
+        id: tags
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "BACKEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod" >> $GITHUB_ENV
+            echo "FRONTEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod" >> $GITHUB_ENV
+          else
+            echo "BACKEND_TAG=ghcr.io/${{ github.actor }}/ez-backend:stage" >> $GITHUB_ENV
+            echo "FRONTEND_TAG=ghcr.io/${{ github.actor }}/ez-frontend:stage" >> $GITHUB_ENV
+          fi
+
+      # --- SCAN DE VULNERABILIDADES (Filesystem en lugar de Imagen) ---
+      - name: 🛡️ Trivy Scan (Source Code)
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'table'
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+
+      # --- BUILD & PUSH DIRECTO A AWS/GHCR (ARM64) ---
+      - name: 🚀 Build & Push Backend
         uses: docker/build-push-action@v5
         with:
           context: ./backend
-          push: false
-          load: true
-          tags: portfolio-backend:local
+          push: true
           platforms: linux/arm64
+          tags: ${{ env.BACKEND_TAG }}
 
-      - name: 🛡️ Trivy Scan (Backend)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'portfolio-backend:local'
-          format: 'table'
-          exit-code: '1'
-          severity: 'CRITICAL,HIGH'
-
-      - name: 🚀 Push Backend
-        run: |
-          TAG=${{ github.ref == 'refs/heads/main' && format('{0}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod', secrets.AWS_ACCOUNT_ID) || format('ghcr.io/{0}/ez-backend:stage', github.actor) }}
-          docker tag portfolio-backend:local $TAG
-          docker push $TAG
-
-      # --- 3. FRONTEND (Hugo + Nginx) ---
-      - name: 🏗️ Build Frontend (Local)
+      - name: 🚀 Build & Push Frontend
         uses: docker/build-push-action@v5
         with:
           context: ./frontend
-          push: false
-          load: true
-          tags: portfolio-frontend:local
+          push: true
           platforms: linux/arm64
-
-      - name: 🛡️ Trivy Scan (Frontend)
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'portfolio-frontend:local'
-          format: 'table'
-          exit-code: '1'
-          severity: 'CRITICAL,HIGH'
-
-      - name: 🚀 Push Frontend
-        run: |
-          TAG=${{ github.ref == 'refs/heads/main' && format('{0}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod', secrets.AWS_ACCOUNT_ID) || format('ghcr.io/{0}/ez-frontend:stage', github.actor) }}
-          docker tag portfolio-frontend:local $TAG
-          docker push $TAG
+          tags: ${{ env.FRONTEND_TAG }}
