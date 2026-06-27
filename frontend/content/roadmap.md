@@ -75,28 +75,32 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🔒 Phase 10: Advanced Cloud Security & Edge SOC (Next Immediate Focus)
-*Focus: FinOps, Least Privilege, and transforming the Home Lab into a Security Operations Center.*
-- [x] **Domain & Go-Live:** Live production deployment verified on native ARM64 architecture.
+## 🔒 Phase 10: Advanced Cloud Architecture & AWS Hardening (Next Focus)
+*Focus: FinOps, Container Orchestration, and Enterprise Identity Governance.*
+- [x] **Domain & Go-Live:** Production environment verified and fully operational on native ARM64 architecture.
 - [ ] **Self-Hosting Security:** Deploy Vaultwarden password manager using the secure GitOps pipeline, connecting it to an isolated, multi-AZ RDS PostgreSQL database with strict Security Group boundaries.
+- [ ] **AWS ECS Integration:** Migrate the standalone Docker Compose stack into an AWS ECS (Elastic Container Service) Cluster using the EC2 Launch Type, mastering Task Definitions and Service Schedulers under the AWS Free Tier.
 - [ ] **Deep Cloud AWS Hardening:**
-  - Exhaustively differentiate Identity-based policies vs. Resource-based policies.
+  - Exhaustively differentiate Identity-based policies vs. Resource-based policies within IAM.
   - Enable IAM Access Analyzer at the regional level to audit and trim inactive permissions.
   - Apply strict S3 Bucket Policies to deny unencrypted HTTP traffic (force `aws:SecureTransport`).
-  - FinOps: Implement S3 Lifecycle Policies to automatically transition Traefik logs to S3 Glacier Deep Archive after 30 days ($0.0009/GB).
-- [ ] **"Deploy & Destroy" Experiments (Proof of Work):**
-  - **AWS WAF (Web Application Firewall):** Deploy via Terraform, simulate an SQLi attack, document the mitigation for the portfolio/LinkedIn, and execute `terraform destroy` to optimize costs.
-  - **ALB & Auto Scaling:** Provision an Application Load Balancer, emulate massive traffic, document horizontal instance auto-scaling, and tear down.
-  - **Event-Driven Security:** Design advanced Lambda functions triggered by critical CloudWatch events or unauthorized S3 writes.
+  - **FinOps:** Implement S3 Lifecycle Policies to automatically transition Traefik logs to S3 Glacier Deep Archive after 30 days ($0.0009/GB).
+- [ ] **"Deploy & Destroy" Proof of Works:**
+  - **AWS WAF (Web Application Firewall):** Deploy via Terraform, simulate an SQLi attack, document the block for LinkedIn, and execute `terraform destroy`.
+  - **ALB & Auto Scaling:** Provision an Application Load Balancer, emulate massive traffic, document horizontal instance auto-scaling, and tear down to mitigate costs.
+
+---
+
+## 🛡️ Phase 10.5: Edge SOC & Defensive CyberSec
+*Focus: SIEM, telemetry gathering, and home lab vulnerability remediation.*
 - [ ] **Hybrid SOC (Raspberry Pi):**
   - Deploy Uptime Kuma for system monitoring (Public Status Pages, 60s pings, and critical Telegram alerts).
-  - Configure Grafana, Prometheus, and Node Exporter for deep resource monitoring (CPU, RAM, Network), securely scraping AWS metrics from the local environment via the Tailscale VPN tunnel.
+  - Configure Grafana, Prometheus, and Node Exporter for deep resource monitoring, securely scraping AWS metrics from the local environment via the Tailscale VPN tunnel.
   - Configure Pi-Hole as an Internal Route 53 for forced local domain resolution (e.g., `grafana.lan`, `vaultwarden.lan`).
   - Install Nginx or Caddy as a local Reverse Proxy to manage internal SSL certificates and TLS termination at the Edge.
 - [ ] **Red Team & SOC Level 1 Training:**
-  - Study defensive pathways on TryHackMe (SOC L1, Cyber Defense).
+  - Study defensive pathways on TryHackMe (SOC L1, Cyber Defense course).
   - Practice web vulnerability remediation (XSS, CSRF, SQL Injections) using the PortSwigger Web Security Academy.
-  - Perform local network port scanning and pentesting to ensure the isolation of home services (Samba, Jellyfin).
 
 ---
 
