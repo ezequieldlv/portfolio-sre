@@ -77,47 +77,41 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ## 🔒 Phase 10: Advanced Cloud Security & Edge SOC (Next Immediate Focus)
 *Focus: FinOps, Least Privilege, and transforming the Home Lab into a Security Operations Center.*
-- [x] **Dominio y Sitio Web Operativo:** Go-Live verificado en producción bajo arquitectura nativa ARM64.
+- [x] **Domain & Go-Live:** Live production deployment verified on native ARM64 architecture.
 - [ ] **Self-Hosting Security:** Deploy Vaultwarden password manager using the secure GitOps pipeline, connecting it to an isolated, multi-AZ RDS PostgreSQL database with strict Security Group boundaries.
 - [ ] **Deep Cloud AWS Hardening:**
-  - Diferenciar exhaustivamente Identity-based policies vs Resource-based policies.
-  - Activar IAM Access Analyzer a nivel regional para auditar y recortar permisos inactivos.
-  - Aplicar S3 Bucket Policies estrictas que denieguen tráfico HTTP no cifrado (forzar `aws:SecureTransport`).
-  - FinOps: Implementar S3 Lifecycle Policies para transicionar automáticamente logs de Traefik a S3 Glacier Deep Archive a los 30 días ($0.0009/GB).
-- [ ] **Experimentos "Deploy & Destroy" (Proof of Work):**
-  - **AWS WAF (Web Application Firewall):** Desplegar mediante Terraform, simular e inyectar un ataque SQLi de prueba, documentar el bloqueo para el portfolio/LinkedIn y ejecutar `terraform destroy` para mitigar costos.
-  - **ALB & Auto Scaling:** Levantar balanceador de aplicación, emular tráfico masivo, documentar el escalado automático horizontal de instancias y destruir.
-  - **Event-Driven Security:** Diseñar funciones Lambda avanzadas que se disparen por eventos críticos de CloudWatch o escrituras no autorizadas en S3.
+  - Exhaustively differentiate Identity-based policies vs. Resource-based policies.
+  - Enable IAM Access Analyzer at the regional level to audit and trim inactive permissions.
+  - Apply strict S3 Bucket Policies to deny unencrypted HTTP traffic (force `aws:SecureTransport`).
+  - FinOps: Implement S3 Lifecycle Policies to automatically transition Traefik logs to S3 Glacier Deep Archive after 30 days ($0.0009/GB).
+- [ ] **"Deploy & Destroy" Experiments (Proof of Work):**
+  - **AWS WAF (Web Application Firewall):** Deploy via Terraform, simulate an SQLi attack, document the mitigation for the portfolio/LinkedIn, and execute `terraform destroy` to optimize costs.
+  - **ALB & Auto Scaling:** Provision an Application Load Balancer, emulate massive traffic, document horizontal instance auto-scaling, and tear down.
+  - **Event-Driven Security:** Design advanced Lambda functions triggered by critical CloudWatch events or unauthorized S3 writes.
 - [ ] **Hybrid SOC (Raspberry Pi):**
-  - Desplegar Uptime Kuma como vigilante del sistema (Status Pages públicos, pings cada 60s y alertas críticas integradas a Telegram).
-  - Configurar Grafana, Prometheus y Node Exporter para monitorización profunda de recursos (CPU, RAM, Red), escrapeando las métricas de AWS desde el entorno local de forma segura a través del túnel de Tailscale VPN.
-  - Configurar Pi-Hole como Route 53 interno para la resolución forzada de dominios locales (ej. `grafana.lan`, `vaultwarden.lan`).
-  - Instalar Nginx o Caddy como Reverse Proxy local para gestionar certificados SSL internos y terminación TLS en el Edge.
+  - Deploy Uptime Kuma for system monitoring (Public Status Pages, 60s pings, and critical Telegram alerts).
+  - Configure Grafana, Prometheus, and Node Exporter for deep resource monitoring (CPU, RAM, Network), securely scraping AWS metrics from the local environment via the Tailscale VPN tunnel.
+  - Configure Pi-Hole as an Internal Route 53 for forced local domain resolution (e.g., `grafana.lan`, `vaultwarden.lan`).
+  - Install Nginx or Caddy as a local Reverse Proxy to manage internal SSL certificates and TLS termination at the Edge.
 - [ ] **Red Team & SOC Level 1 Training:**
-  - Estudiar rutas defensivas en TryHackMe (SOC L1, Cyber Defense).
-  - Practicar remediación de vulnerabilidades web (XSS, CSRF, Inyecciones SQL) usando la academia gratuita de PortSwigger.
-  - Realizar escaneos de puertos y pentesting a nivel red local para asegurar el aislamiento de servicios domésticos (Samba, Jellyfin).
+  - Study defensive pathways on TryHackMe (SOC L1, Cyber Defense).
+  - Practice web vulnerability remediation (XSS, CSRF, SQL Injections) using the PortSwigger Web Security Academy.
+  - Perform local network port scanning and pentesting to ensure the isolation of home services (Samba, Jellyfin).
 
 ---
 
-## 🐧 Phase 10.5: The Metal (Arch Linux From Scratch)
-*Focus: Terminal Mastery and Low-Level OS tuning.*
-- [ ] **Project:** Instalar Arch Linux desde cero en la notebook personal mediante CLI puro.
-- [ ] **Customization:** Diseñar y versionar dotfiles propios, configurando Hyprland como compositor de ventanas bajo Wayland.
-- [ ] **Tryhard IDE:** Configurar Neovim desde cero como el entorno de desarrollo y edición principal.
-
 ## ☸️ Phase 11: The Final Boss (Kubernetes)
 *Focus: Industry-standard container orchestration.*
-- [ ] **K3s on Edge:** Migrar la infraestructura de la Raspberry Pi desde Docker Compose hacia un clúster ligero de K3s.
-- [ ] **Kubernetes Abstractions:** Dominar el diseño de Pods, Deployments, Services, ConfigMaps y controladores de Ingress.
-- [ ] **Cluster Hardening:** Implementar Network Policies para aislamiento estricto de Pods y control de accesos mediante RBAC (Role-Based Access Control).
-- [ ] **GitOps Realization:** Desplegar ArgoCD para la sincronización declarativa, auditable y puramente basada en código del estado del clúster.
+- [ ] **K3s on Edge:** Migrate the Raspberry Pi infrastructure from Docker Compose to a lightweight K3s cluster.
+- [ ] **Kubernetes Abstractions:** Master the design of Pods, Deployments, Services, ConfigMaps, and Ingress controllers.
+- [ ] **Cluster Hardening:** Implement Network Policies for strict Pod isolation and RBAC (Role-Based Access Control).
+- [ ] **GitOps Realization:** Deploy ArgoCD for declarative, auditable, and purely code-based cluster state synchronization.
 
 ## 🚀 Extras & Pro League (Horizon)
 *Focus: Data Engineering, Cloud Architecture, and Career Growth.*
-- [ ] Introducción a Data Engineering, arquitecturas APM (Elastic/ELK stack) y motores de automatización de flujos de datos (n8n / Apache Airflow).
-- [ ] Resolver máquinas retiradas en Hack The Box (HTB) en modo "blind" (sin guías ni writeups).
-- [ ] Preparación y certificación oficial de AWS Solutions Architect Associate.
+- [ ] Introduction to Data Engineering, APM architectures (Elastic/ELK stack), and data workflow automation (n8n / Apache Airflow).
+- [ ] Hack The Box (HTB) - Retired Machines in "blind" mode (no guides or writeups).
+- [ ] AWS Solutions Architect Associate official preparation and certification.
 
 ---
 *Roadmap updated automatically via CI/CD.*

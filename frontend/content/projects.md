@@ -90,16 +90,14 @@ Led an initiative to modernize internal technical documentation for Tier 2 Suppo
 ---
 
 ## 🌐 SRE Portfolio & Live Telemetry
-*Cloud-Edge Computing / Microservices / CI/CD*
+*Hybrid Cloud / GitOps / Multi-Architecture CI/CD*
 
-A minimalist, high-performance portfolio built with a Docs-as-Code philosophy. This repository contains the application layer (Microservices) of my personal infrastructure, designed to showcase my skills in Go, Static Site Generation, and Optimized Containerization.
+More than just a static website, this portfolio is a live demonstration of Enterprise Cloud Architecture. The frontend fetches real-time telemetry from a **Golang API**, deployed across a dual-environment infrastructure: a local Raspberry Pi Edge cluster (Staging) and an AWS Graviton EC2 instance (Production), entirely managed through a Zero-Intervention GitOps pipeline.
 
-The production environment has been migrated from a legacy edge setup to a hardened cloud-native architecture on AWS, incorporating DevSecOps pipelines and GitOps deployment strategies.
-
-* **Frontend:** Hugo + Nginx (Static Edge)
-* **Backend:** Golang 1.22 REST API (Distroless Container)
-* **Security:** DevSecOps Pipeline (Trivy, Hadolint, Secret Scanning) + Strict CORS Policies.
-* **CI/CD Pipelines:** GitHub Actions (Multi-environment logic: Staging -> GHCR, Production -> AWS ECR)
+* **Frontend:** Hugo + Nginx (Alpine Slim)
+* **Backend:** Golang 1.26 REST API (Distroless Container)
+* **Infrastructure:** AWS (ECR, Route53, VPC) + Raspberry Pi (Edge)
+* **Security & Routing:** Traefik Ingress + Let's Encrypt (Prod) / Cloudflare Zero-Trust (Staging).
 
 ### 🏗️ Live Architecture
 
@@ -121,33 +119,33 @@ graph TD
     classDef net fill:#1f2335,stroke:#7aa2f7,stroke-width:1px,color:#a9b1d6
 
     %% FLUJO DE CÓDIGO
-    Developer(("💻 Ezequiel")):::dev -->|git push| GitHub{"🐙 GitHub Actions Engine"}:::cicd
+    Developer((💻 Ezequiel)):::dev -->|git push| GitHub{🐙 GitHub Actions Engine}:::cicd
 
-    subgraph gates ["CI/CD DevSecOps Gates"]
-        GitHub -->|1. Audit| Trufflehog["🕵️‍♂️ Trufflehog Secrets"]:::cicd
-        GitHub -->|2. Lint| Hadolint["🐳 Hadolint Docker"]:::cicd
-        GitHub -->|3. Scan| Trivy["🛡️ Trivy Vulnerabilities"]:::cicd
+    subgraph "CI/CD DevSecOps Gates"
+        GitHub -->|1. Audit| Trufflehog[🕵️‍♂️ Trufflehog Secrets]:::cicd
+        GitHub -->|2. Lint| Hadolint[🐳 Hadolint Docker]:::cicd
+        GitHub -->|3. Scan| Trivy[🛡️ Trivy Vulnerabilities]:::cicd
     end
 
     %% ENRUTAMIENTO POR RAMAS (LOGICA DEL PIPELINE)
-    Trivy -->|Branch: develop| GHCR[("📦 GitHub Registry")]:::cicd
-    Trivy -->|Branch: main| ECR[("🐳 AWS ECR Private")]:::cloud
+    Trivy -->|Branch: develop| GHCR[(📦 GitHub Registry)]:::cicd
+    Trivy -->|Branch: main| ECR[(🐳 AWS ECR Private)]:::cloud
 
     %% ENTORNO STAGING (RASPBERRY PI)
-    subgraph staging ["Ez-Lab Environment (Staging Edge)"]
-        GHCR -.->|Auto Pull| WatchtowerPi["🔄 Watchtower Agent"]:::edge
+    subgraph "Ez-Lab Environment (Staging Edge)"
+        GHCR -.->|Auto Pull| WatchtowerPi[🔄 Watchtower Agent]:::edge
         WatchtowerPi -->|Deploy :stage| WebStage["🖥️ Frontend (Hugo)"]:::edge
         WatchtowerPi -->|Deploy :stage| APIStage["⚙️ Telemetry (Go)"]:::edge
         WebStage -.->|CORS Fetch| APIStage
     end
 
     %% ENTORNO PRODUCCIÓN (AWS)
-    subgraph prod ["MyssTic Warden Environment (Production Cloud)"]
-        ECR -.->|IAM Auth Pull| WatchtowerAWS["🔄 Watchtower Agent"]:::cloud
+    subgraph "MyssTic Warden Environment (Production Cloud)"
+        ECR -.->|IAM Auth Pull| WatchtowerAWS[🔄 Watchtower Agent]:::cloud
         WatchtowerAWS -->|Deploy :prod| WebProd["🖥️ Frontend (Nginx)"]:::cloud
         WatchtowerAWS -->|Deploy :prod| APIProd["⚙️ Telemetry (Go)"]:::cloud
 
-        Route53(("🌐 Route 53")):::cloud --> Traefik["🔀 Traefik Ingress"]:::cloud
+        Route53((🌐 Route 53)):::cloud --> Traefik[🔀 Traefik Ingress]:::cloud
         Traefik -->|Path: /| WebProd
         Traefik -->|Path: /api/health| APIProd
         WebProd -.->|Internal VPC Fetch| APIProd

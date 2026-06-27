@@ -78,6 +78,7 @@ The production environment has been migrated from a legacy edge setup to a harde
    docker compose up -d
 
    *Access Frontend at http://localhost:8095*
+
    *Access Backend at http://localhost:8585*
 
 ## 🗺 Application Roadmap
