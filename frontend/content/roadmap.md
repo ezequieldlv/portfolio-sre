@@ -75,37 +75,38 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 
 ---
 
-## 🔒 Phase 10: Advanced Cloud Architecture & AWS Hardening (Next Focus)
-*Focus: FinOps, Container Orchestration, and Enterprise Identity Governance.*
+## ✅ Phase 10: Advanced Cloud Architecture & AWS Hardening (Completed)
+*Focus: FinOps, Container Orchestration Pivot, and Enterprise Identity Governance.*
 - [x] **Domain & Go-Live:** Production environment verified and fully operational on native ARM64 architecture.
-- [ ] **Self-Hosting Security:** Deploy Vaultwarden password manager using the secure GitOps pipeline, connecting it to an isolated, multi-AZ RDS PostgreSQL database with strict Security Group boundaries.
-- [ ] **AWS ECS Integration:** Migrate the standalone Docker Compose stack into an AWS ECS (Elastic Container Service) Cluster using the EC2 Launch Type, mastering Task Definitions and Service Schedulers under the AWS Free Tier.
-- [ ] **Deep Cloud AWS Hardening:**
-  - Exhaustively differentiate Identity-based policies vs. Resource-based policies within IAM.
-  - Enable IAM Access Analyzer at the regional level to audit and trim inactive permissions.
-  - Apply strict S3 Bucket Policies to deny unencrypted HTTP traffic (force `aws:SecureTransport`).
-  - **FinOps:** Implement S3 Lifecycle Policies to automatically transition Traefik logs to S3 Glacier Deep Archive after 30 days ($0.0009/GB).
-- [ ] **"Deploy & Destroy" Proof of Works:**
-  - **AWS WAF (Web Application Firewall):** Deploy via Terraform, simulate an SQLi attack, document the block for LinkedIn, and execute `terraform destroy`.
-  - **ALB & Auto Scaling:** Provision an Application Load Balancer, emulate massive traffic, document horizontal instance auto-scaling, and tear down to mitigate costs.
+- [x] **Self-Hosting Security:** Deploy Vaultwarden password manager using the secure GitOps pipeline, connecting it to an isolated, single-AZ RDS PostgreSQL database with strict Security Group boundaries.
+- [x] **Container Orchestration Pivot:** Evaluated AWS ECS. *Strategic Decision:* Discarded vendor-locked ECS in favor of industry-standard Kubernetes (K3s) on bare-metal Edge hardware to maximize FinOps and deep technical learning.
+- [x] **Deep Cloud AWS Hardening:**
+  - Exhaustively differentiated Identity-based policies vs. Resource-based policies within IAM.
+  - Enabled IAM Access Analyzer at the regional level to audit and trim inactive permissions.
+  - Applied strict S3 Bucket Policies to deny unencrypted HTTP traffic (force `aws:SecureTransport`).
+  - **FinOps:** Implemented S3 Lifecycle Policies to automatically transition logs to S3 Glacier Deep Archive after 30 days ($0.0009/GB), minimizing cloud waste.
+- [x] **"Deploy & Destroy" Proof of Works (Capa 7):**
+  - **AWS WAF (Web Application Firewall):** Deployed via Terraform, simulated an SQLi attack, intercepted malicious payloads via AWS Managed Rules, and executed `terraform destroy` for zero-cost auditing.
+  - **ALB & Auto Scaling:** Provisioned an Application Load Balancer to route multi-AZ traffic, handled custom Health Check matchers (`200-499`) for strict reverse proxies, and tore down the infrastructure cleanly.
 
 ---
 
-## 🛡️ Phase 10.5: Edge SOC & Defensive CyberSec
-*Focus: SIEM, telemetry gathering, and home lab vulnerability remediation.*
-- [ ] **Hybrid SOC (Raspberry Pi):**
-  - Deploy Uptime Kuma for system monitoring (Public Status Pages, 60s pings, and critical Telegram alerts).
-  - Configure Grafana, Prometheus, and Node Exporter for deep resource monitoring, securely scraping AWS metrics from the local environment via the Tailscale VPN tunnel.
-  - Configure Pi-Hole as an Internal Route 53 for forced local domain resolution (e.g., `grafana.lan`, `vaultwarden.lan`).
-  - Install Nginx or Caddy as a local Reverse Proxy to manage internal SSL certificates and TLS termination at the Edge.
+## 🛡️ Phase 10.5: Edge SOC & Defensive CyberSec (`mysstic-sentinel`)
+*Focus: SIEM, telemetry gathering, and hybrid vulnerability remediation.*
+- [ ] **Hybrid SOC Architecture:**
+  - Deploy Uptime Kuma for external system monitoring (Status Pages, 60s pings, Telegram alerts).
+  - Configure Grafana, Prometheus, and Loki for deep resource and log monitoring, securely scraping AWS metrics via the Tailscale VPN tunnel.
+  - Integrate an AI-driven log analysis agent to detect anomaly patterns and malicious IPs.
+- [ ] **Internal Routing & Edge SSL:**
+  - Configure Pi-Hole as an Internal Route 53 for forced local domain resolution (e.g., `grafana.lan`).
+  - Deploy Traefik/Caddy at the Edge to manage internal SSL certificates and TLS termination.
 - [ ] **Red Team & SOC Level 1 Training:**
   - Study defensive pathways on TryHackMe (SOC L1, Cyber Defense course).
-  - Practice web vulnerability remediation (XSS, CSRF, SQL Injections) using the PortSwigger Web Security Academy.
 
 ---
 
-## ☸️ Phase 11: The Final Boss (Kubernetes)
-*Focus: Industry-standard container orchestration.*
+## ☸️ Phase 11: The Final Boss (`mysstic-edge` Kubernetes)
+*Focus: Industry-standard container orchestration on Bare-Metal.*
 - [ ] **K3s on Edge:** Migrate the Raspberry Pi infrastructure from Docker Compose to a lightweight K3s cluster.
 - [ ] **Kubernetes Abstractions:** Master the design of Pods, Deployments, Services, ConfigMaps, and Ingress controllers.
 - [ ] **Cluster Hardening:** Implement Network Policies for strict Pod isolation and RBAC (Role-Based Access Control).
