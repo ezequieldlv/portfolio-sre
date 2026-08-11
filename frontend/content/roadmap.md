@@ -92,19 +92,21 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 ---
 
 ## 🛡️ Phase 10.5: Edge SOC & Defensive CyberSec (`mysstic-sentinel`)
-*Focus: Local telemetry gathering, log retention, and intelligent routing to Cloud SIEM.*
-- [x] **Architecture & Core Components:**
-  - **Proxy & Networking:** Caddy / Traefik (Main generator of Access Logs & Internal TLS via `.lan` domains).
-  - **Data Pipeline (Cleaning & Routing):** Promtail (Extracts raw logs from Docker sockets, formats to JSON, and routes them).
-  - **Search Engine & Presentation:** Grafana Loki (Fast indexed storage) + Grafana (Visual Dashboards).
-  - **Data Lake (Cold Storage):** AWS S3 or local MinIO for massive, low-cost, long-term log retention.
-- [x] **Dashboards & Use Cases (Development):**
-  - **Hardware Telemetry:** Raspberry Pi temperature, CPU, and RAM monitoring using Prometheus + Node Exporter.
-  - **Portfolio Analytics:** Grafana dashboards reading Reverse Proxy logs to map IP geolocation, User-Agents, and HTTP status codes (200, 404, 403) of visitors.
-  - **Perimeter Security:** Visual alerts on SSH brute-force attempts or port scans.
-- [ ] **MyssTic Sentinel Integration (The Hybrid Brain):**
-  - Analyze and deploy the `mysstic-sentinel` agent/pipeline on the Pi.
-  - **Stateless AI Triggering:** MyssTic Edge does not run AI locally. When the pipeline (e.g., Promtail/Alertmanager) detects a critical security rule (e.g., >5 failed logins), it executes an authenticated HTTP POST Webhook (JWT) to the MyssTic Sentinel API. The LLM evaluates the threat and determines if a Telegram alert should be issued.
+*Focus: Building a custom AI-driven SIEM (Sentinel) and deploying Local Edge Telemetry.*
+
+**🧠 Part 1: MyssTic Sentinel (The Cloud-Native SIEM Backend)**
+*A proprietary log ingestion and threat analysis engine built from scratch.*
+- [x] **Backend Architecture:** Developed a decoupled Producer-Consumer REST API using Python (Django REST Framework).
+- [x] **Asynchronous Processing:** Implemented Redis as a message broker and Celery as a distributed worker to handle high-volume log ingestion without blocking the main thread.
+- [x] **Generative AI Integration:** Integrated Google Gemini LLM via Python SDK to evaluate raw logs, detect anomaly patterns, and determine threat severity dynamically.
+- [x] **Secure Ingestion & SOAR:** Secured endpoints with JWT (JSON Web Tokens) and implemented automated Telegram webhooks for critical [CRÍTICO] alerts.
+
+**👁️ Part 2: MyssTic Edge (Local SOC & Telemetry)**
+*The first line of defense deployed on the Raspberry Pi 5 to collect, clean, and visualize logs.*
+- [x] **Zero-Trust Routing & TLS:** Configured Pi-Hole as an Internal Route 53 and Caddy Proxy for internal TLS termination (`.lan` domains) over the Tailscale mesh.
+- [x] **Data Pipeline & Search:** Deployed Promtail to extract raw logs from Docker sockets, routing them to Grafana Loki for fast-indexed log querying.
+- [x] **Active Observability:** Deployed Uptime Kuma for internal/external health checks and Prometheus + Node Exporter for deep hardware telemetry.
+- [ ] **The Hybrid Brain Integration (WIP):** Connect MyssTic Edge (Promtail/Alertmanager) to send authenticated HTTP POST Webhooks (JWT) containing critical local logs to the MyssTic Sentinel API for AI evaluation.
 
 ---
 
