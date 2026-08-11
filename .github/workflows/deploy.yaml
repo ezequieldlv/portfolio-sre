@@ -40,8 +40,8 @@ jobs:
 
       - name: 🐳 Hadolint (Linter de Dockerfiles)
         run: |
-          docker run --rm -i hadolint/hadolint --ignore DL3066 - < ./frontend/Dockerfile
-          docker run --rm -i hadolint/hadolint --ignore DL3066 - < ./backend/Dockerfile
+          docker run --rm -i hadolint/hadolint hadolint --ignore DL3066 - < ./frontend/Dockerfile
+          docker run --rm -i hadolint/hadolint hadolint --ignore DL3066 - < ./backend/Dockerfile
 
   # =======================================================
   # FASE 2: BUILD & PUSH (Nativo ARM64)
