@@ -92,16 +92,19 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 ---
 
 ## 🛡️ Phase 10.5: Edge SOC & Defensive CyberSec (`mysstic-sentinel`)
-*Focus: SIEM, telemetry gathering, and hybrid vulnerability remediation.*
-- [ ] **Hybrid SOC Architecture:**
-  - Deploy Uptime Kuma for external system monitoring (Status Pages, 60s pings, Telegram alerts).
-  - Configure Grafana, Prometheus, and Loki for deep resource and log monitoring, securely scraping AWS metrics via the Tailscale VPN tunnel.
-  - Integrate an AI-driven log analysis agent to detect anomaly patterns and malicious IPs.
-- [ ] **Internal Routing & Edge SSL:**
-  - Configure Pi-Hole as an Internal Route 53 for forced local domain resolution (e.g., `grafana.lan`).
-  - Deploy Traefik/Caddy at the Edge to manage internal SSL certificates and TLS termination.
-- [ ] **Red Team & SOC Level 1 Training:**
-  - Study defensive pathways on TryHackMe (SOC L1, Cyber Defense course).
+*Focus: Local telemetry gathering, log retention, and intelligent routing to Cloud SIEM.*
+- [x] **Architecture & Core Components:**
+  - **Proxy & Networking:** Caddy / Traefik (Main generator of Access Logs & Internal TLS via `.lan` domains).
+  - **Data Pipeline (Cleaning & Routing):** Promtail (Extracts raw logs from Docker sockets, formats to JSON, and routes them).
+  - **Search Engine & Presentation:** Grafana Loki (Fast indexed storage) + Grafana (Visual Dashboards).
+  - **Data Lake (Cold Storage):** AWS S3 or local MinIO for massive, low-cost, long-term log retention.
+- [x] **Dashboards & Use Cases (Development):**
+  - **Hardware Telemetry:** Raspberry Pi temperature, CPU, and RAM monitoring using Prometheus + Node Exporter.
+  - **Portfolio Analytics:** Grafana dashboards reading Reverse Proxy logs to map IP geolocation, User-Agents, and HTTP status codes (200, 404, 403) of visitors.
+  - **Perimeter Security:** Visual alerts on SSH brute-force attempts or port scans.
+- [ ] **MyssTic Sentinel Integration (The Hybrid Brain):**
+  - Analyze and deploy the `mysstic-sentinel` agent/pipeline on the Pi.
+  - **Stateless AI Triggering:** MyssTic Edge does not run AI locally. When the pipeline (e.g., Promtail/Alertmanager) detects a critical security rule (e.g., >5 failed logins), it executes an authenticated HTTP POST Webhook (JWT) to the MyssTic Sentinel API. The LLM evaluates the threat and determines if a Telegram alert should be issued.
 
 ---
 
