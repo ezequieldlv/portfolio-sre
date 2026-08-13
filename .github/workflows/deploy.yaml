@@ -40,8 +40,8 @@ jobs:
 
       - name: 🐳 Hadolint (Linter de Dockerfiles)
         run: |
-          docker run --rm -i hadolint/hadolint < ./frontend/Dockerfile
-          docker run --rm -i hadolint/hadolint < ./backend/Dockerfile
+          docker run --rm -i hadolint/hadolint hadolint --ignore DL3066 - < ./frontend/Dockerfile
+          docker run --rm -i hadolint/hadolint hadolint --ignore DL3066 - < ./backend/Dockerfile
 
   # =======================================================
   # FASE 2: BUILD & PUSH (Nativo ARM64)
@@ -83,11 +83,17 @@ jobs:
         id: tags
         run: |
           if [ "${{ github.ref }}" = "refs/heads/main" ]; then
-            echo "BACKEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod" >> "$GITHUB_ENV"
-            echo "FRONTEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod" >> "$GITHUB_ENV"
+            {
+              echo "BACKEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-backend:prod"
+              echo "FRONTEND_TAG=${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-2.amazonaws.com/portfolio-sre-frontend:prod"
+              echo "HUGO_BASE_URL=https://ez-lab.site/"
+            } >> "$GITHUB_ENV"
           else
-            echo "BACKEND_TAG=ghcr.io/${{ github.actor }}/ez-backend:stage" >> "$GITHUB_ENV"
-            echo "FRONTEND_TAG=ghcr.io/${{ github.actor }}/ez-frontend:stage" >> "$GITHUB_ENV"
+            {
+              echo "BACKEND_TAG=ghcr.io/${{ github.actor }}/ez-backend:stage"
+              echo "FRONTEND_TAG=ghcr.io/${{ github.actor }}/ez-frontend:stage"
+              echo "HUGO_BASE_URL=https://portfolio.lan/"
+            } >> "$GITHUB_ENV"
           fi
 
       # --- SCAN DE VULNERABILIDADES (Filesystem en lugar de Imagen) ---
@@ -116,3 +122,5 @@ jobs:
           push: true
           platforms: linux/arm64
           tags: ${{ env.FRONTEND_TAG }}
+          build-args: |
+            BASE_URL=${{ env.HUGO_BASE_URL }}

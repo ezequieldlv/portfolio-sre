@@ -7,7 +7,9 @@ WORKDIR /src
 
 COPY . .
 
-RUN hugo --minify --environment production
+ARG BASE_URL=https://ez-lab.site/
+
+RUN hugo --minify --environment production --baseURL=${BASE_URL}
 
 # ==========================================
 # Etapa 2: Servidor Web (Producción)
