@@ -106,7 +106,7 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 - [x] **Zero-Trust Routing & TLS:** Configured Pi-Hole as an Internal Route 53 and Caddy Proxy for internal TLS termination (`.lan` domains) over the Tailscale mesh.
 - [x] **Data Pipeline & Search:** Deployed Promtail to extract raw logs from Docker sockets, routing them to Grafana Loki for fast-indexed log querying.
 - [x] **Active Observability:** Deployed Uptime Kuma for internal/external health checks and Prometheus + Node Exporter for deep hardware telemetry.
-- [ ] **The Hybrid Brain Integration (WIP):** Connect MyssTic Edge (Promtail/Alertmanager) to send authenticated HTTP POST Webhooks (JWT) containing critical local logs to the MyssTic Sentinel API for AI evaluation.
+- [x] **The Hybrid Brain Integration (WIP):** Connect MyssTic Edge (Promtail/Alertmanager) to send authenticated HTTP POST Webhooks (JWT) containing critical local logs to the MyssTic Sentinel API for AI evaluation.
 
 ---
 
