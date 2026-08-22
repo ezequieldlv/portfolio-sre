@@ -114,7 +114,9 @@ This roadmap documents my engineering journey from bare-metal infrastructure to 
 *Focus: Industry-standard container orchestration on Bare-Metal.*
 - [ ] **K3s on Edge:** Migrate the Raspberry Pi infrastructure from Docker Compose to a lightweight K3s cluster.
 - [ ] **Kubernetes Abstractions:** Master the design of Pods, Deployments, Services, ConfigMaps, and Ingress controllers.
+- [ ] **Helm Charts & Kustomize:** Dynamic packaging and versioning of microservices for declarative GitOps deployments.
 - [ ] **Cluster Hardening:** Implement Network Policies for strict Pod isolation and RBAC (Role-Based Access Control).
+- [ ] **Native K8s Observability:** Deploy Kube-Prometheus-Stack (kube-state-metrics) for deep cluster-level telemetry.
 - [ ] **GitOps Realization:** Deploy ArgoCD for declarative, auditable, and purely code-based cluster state synchronization.
 
 ## 🚀 Extras & Pro League (Horizon)
