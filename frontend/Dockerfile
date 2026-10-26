@@ -1,25 +1,29 @@
 # ==========================================
 # Etapa 1: Builder (Compilación)
 # ==========================================
-FROM klakegg/hugo:ext-alpine AS builder
+FROM ghcr.io/gohugoio/hugo:v0.148.0 AS builder
 
 WORKDIR /src
 
 COPY . .
 
-RUN hugo --minify --environment production
+ARG BASE_URL=https://ez-lab.site/
+
+RUN hugo --minify --environment production --baseURL=${BASE_URL}
 
 # ==========================================
 # Etapa 2: Servidor Web (Producción)
 # ==========================================
-FROM nginx:alpine-slim
+FROM nginx:1.27-alpine-slim
 
 LABEL maintainer="MyssTic Warden Cloud Ops"
 LABEL environment="production"
 
-RUN rm -rf /usr/share/nginx/html/*
+RUN apk update && apk upgrade --no-cache
 
+RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /src/public /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
